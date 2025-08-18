@@ -1,0 +1,151 @@
+/* background video fixed */
+.hero-video-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1; /* ✅ UPDATED from 0 to -1 */
+}
+
+/* optional video overlay */
+.hero-video-fixed::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 10, 30, 0.5);
+  z-index: 1;
+}
+
+/* content goes on top of video */
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+/* hero content */
+.hero-content {
+  padding: 120px 20px 60px;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  margin: 100px auto; /* decreased from 200px */
+}
+
+
+.hero-content h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  padding: 14px 28px;
+  border-radius: 30px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  transform: translateY(-10px);
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* card sections with transparent backgrounds */
+.card-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.card-section h2 {
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.offerings-list,
+.reasons-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+}
+
+.card {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 16px;
+  color: white;
+  padding: 20px;
+  cursor: pointer;
+  min-width: 260px;
+  max-width: 300px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  background-color: rgba(255,255,255,0.1);
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+}
+
+/* FIXED THE ERROR HERE by adding :global() */
+:global([data-aos]) {
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+:global([data-aos].aos-animate) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 10px 22px;
+  }
+  .offerings-list,
+  .reasons-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    min-width: 90%;
+  }
+}

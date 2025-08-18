@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* fixed background video */
+.background-video-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  filter: hue-rotate(180deg); /* shifts red to blue */
+}
+
+/* content on top of video */
+.about-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+/* about section styling */
+.about-content {
+  padding: 120px 20px 60px;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  margin: 100px auto;
+  background: none; /* no background */
+  backdrop-filter: none; /* no blur */
+  border-radius: 0; /* optional: remove rounding */
+}
+
+.about-content h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem); /* increased from 2-3rem to 2.5-4rem */
+  margin-bottom: 24px;
+}
+
+.about-content p {
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem); /* increased from 1-1.2rem to 1.2-1.5rem */
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.gradient-text {
+  color: white;
+}
+
+
+
+.about-content p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-content h1 {
+    font-size: 2rem;
+  }
+  .about-content p {
+    font-size: 1rem;
+  }
+}
