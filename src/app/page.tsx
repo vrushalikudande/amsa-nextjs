@@ -44,11 +44,11 @@ export default function Home() {
       <div className={styles['content-wrapper']}>
         {/* Hero Section */}
         <section className={styles['hero-content']}>
-          <h1>Empowering Digital Transformation with SAP Expertise</h1>
+          <h1>Empowering Businesses Through Digital Innovation</h1>
           <p>
-            We deliver SAP-powered ERP, digital transformation, and enterprise software solutions to help you scale.
+            Website & Mobile App Development | SEO | Scalable IT Solutions
           </p>
-          <button className={`${styles['cta-button']} ${styles.pulse}`}>Get in Touch</button>
+          <button className={`${styles['cta-button']} ${styles.pulse}`}>Get a Free Consultation</button>
         </section>
 
         {/* Offerings */}

@@ -1,4 +1,3 @@
-// app/services/page.tsx
 import type { Metadata } from "next";
 import {
   FaLaptopCode,
@@ -23,27 +22,18 @@ export const metadata: Metadata = {
 };
 
 const services = [
-  { title: "Web Development", description: "Our developers deliver responsive and scalable web solutions.", icon: <FaLaptopCode /> },
-  { title: "Mobile App Development", description: "We specialize in custom mobile app solutions for startups and enterprises.", icon: <FaMobileAlt /> },
-  { title: "Remote Staffing", description: "Hire top-tier remote developers tailored to your needs.", icon: <FaUsers /> },
-  { title: "Custom Software", description: "Tailored software to meet your unique business challenges.", icon: <FaCogs /> },
-  { title: "Software Testing", description: "Ensure quality with our manual and automated testing services.", icon: <FaBug /> },
-  { title: "Cloud Computing", description: "Deploy scalable cloud solutions on AWS, Azure, or GCP.", icon: <FaCloud /> },
-  { title: "E-Commerce", description: "Build and scale secure and fast online stores.", icon: <FaShoppingCart /> },
-  { title: "DBMS", description: "Database solutions for efficient data management.", icon: <FaDatabase /> },
-  { title: "DevOps", description: "Automate infrastructure, CI/CD, and monitoring pipelines.", icon: <FaTools /> },
-];
-
-const stats = [
-  { icon: <FaSmile />, value: 5, label: "Happy Clients" },
-  { icon: <FaCheckCircle />, value: 4, label: "Projects Completed" },
-  { icon: <FaThumbsUp />, value: 4, label: "Positive Feedback" },
-  { icon: <FaBolt />, value: 450, label: "Hours of Support" },
+  { title: "Website Development", description: "Modern, responsive websites using HTML5, CSS, JavaScript, React, and WordPress — designed to engage and convert.", icon: <FaLaptopCode /> },
+  { title: "Mobile App Development", description: "Custom Android, iOS, and cross-platform (Flutter, React Native) mobile apps that solve real-world problems.", icon: <FaMobileAlt /> },
+  { title: "SEO & Digital Marketing", description: "On-page, off-page, and technical SEO strategies that boost your search rankings and generate leads.", icon: <FaUsers /> },
+  { title: "Full-Stack Development", description: "Complete solutions including frontend, backend (Node.js, PHP, Python), databases (MySQL, MongoDB), and APIs", icon: <FaCogs /> },
+  { title: "E-Commerce Developement", description: "Online store setup with custom checkout, cart, product pages, and secure payments.", icon: <FaShoppingCart /> },
+  { title: "UI/UX Design", description: "Wireframes, prototypes, and clean design that enhances user experience and accessibility.", icon: <FaDatabase /> },
 ];
 
 export default function ServicesPage() {
   return (
-    <>
+    <div className={styles.servicesPageContainer}>
+
       {/* Fixed background video */}
       <div className={styles["services-video-section"]}>
         <video autoPlay muted loop playsInline className={styles["services-video"]}>
@@ -76,28 +66,50 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className={styles.about}>
-          <div className={styles["about-text"]}>
-            <h2>About Our Company.</h2>
-            <p>
-              AMSA Overseas is a global leader in software development, dedicated to
-              empowering businesses worldwide with cutting-edge technological solutions.
-              Founded in 2019, we have consistently delivered exceptional apps that drive
-              business growth and success.
-            </p>
-          </div>
-
-          <div className={styles["about-stats"]}>
-            {stats.map((stat, index) => (
-              <div className={styles["stat-box"]} key={index}>
-                <div className={styles["stat-icon"]}>{stat.icon}</div>
-                <h3>{stat.value}</h3>
-                <p>{stat.label}</p>
+        {/* Technologies We Use Section */}
+        <section className={styles.technologies}>
+          <h2>Technologies We Use</h2>
+          <p>We work with cutting-edge technologies to deliver modern solutions</p>
+          <div className={styles.techGrid}>
+            <div className={styles.techCategory}>
+              <h3>Frontend</h3>
+              <div className={styles.techPills}>
+                <span>React</span>
+                <span>Vue.js</span>
+                <span>Angular</span>
+                <span>TypeScript</span>
               </div>
-            ))}
+            </div>
+            <div className={styles.techCategory}>
+              <h3>Backend</h3>
+              <div className={styles.techPills}>
+                <span>Node.js</span>
+                <span>Python</span>
+                <span>Java</span>
+                <span>.NET</span>
+              </div>
+            </div>
+            <div className={styles.techCategory}>
+              <h3>Mobile</h3>
+              <div className={styles.techPills}>
+                <span>React Native</span>
+                <span>Flutter</span>
+                <span>Swift</span>
+                <span>Kotlin</span>
+              </div>
+            </div>
+            <div className={styles.techCategory}>
+              <h3>Cloud</h3>
+              <div className={styles.techPills}>
+                <span>AWS</span>
+                <span>Azure</span>
+                <span>Google Cloud</span>
+                <span>Docker</span>
+              </div>
+            </div>
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }

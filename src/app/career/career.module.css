@@ -1,48 +1,155 @@
-.career-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+/* Main wrapper for the entire page */
+.careerPageWrapper {
+  color: white;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Fullscreen Background Video */
-.career-video {
+/* Fixed Background Video and Overlay */
+.careerBackground {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
+  height: 100vh;
+  z-index: -1;
   filter: hue-rotate(180deg);
 }
 
-/* Semi-dark overlay to improve text visibility */
-.career-overlay {
-  position: fixed;
+.careerVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.careerOverlay {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-/* Fully centered heading */
-.career-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* precise centering */
-  text-align: center;
+/* Scrollable Content Area */
+.careerContent {
+  position: relative;
   z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 150px 20px 100px 20px; /* Top padding pushes content below navbar */
 }
 
-/* Heading style */
-.career-heading {
-  color: white;
+/* Header Section */
+.careerHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.careerHeader h1 {
   font-size: 3.5rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.introText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 750px;
+  margin: 0 auto;
+  color: #e0e0e0;
+}
+
+/* General Section Styling */
+.section {
+  margin-bottom: 80px;
+}
+
+.sectionHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+  color: #a992ff; /* Accent color from services page */
+}
+
+/* Why Join Us Grid */
+.whyJoinUsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* Glassmorphism Feature Box */
+.featureBox {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.featureBox:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.featureBox h3 {
+  margin: 15px 0 10px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.featureBox p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: #a992ff;
+}
+
+/* No Openings Section */
+.noOpenings {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.noOpenings p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.noOpenings a {
+  color: #a992ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.noOpenings a:hover {
+  color: #c3b6ff;
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .careerContent {
+    padding-top: 120px;
+  }
+  .careerHeader h1 {
+    font-size: 2.8rem;
+  }
+  .sectionHeading {
+    font-size: 2rem;
+  }
 }

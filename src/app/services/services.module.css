@@ -1,3 +1,7 @@
+.servicesPageContainer {
+  position: relative;
+}
+
 /* Video background fixed */
 .services-video-section {
   position: fixed;
@@ -32,8 +36,9 @@
   z-index: 2;
   margin-top: 200px;
   color: white;
+  /* This line adds space at the bottom for the footer */
+  padding-bottom: 300px; 
 }
-
 .hero-heading {
   text-align: center;
   margin-bottom: 40px;
@@ -95,155 +100,79 @@
   margin-bottom: 15px;
 }
 
-/* Skills section */
-.skills-section {
+/* Technologies Section - UPDATED AND FIXED */
+.technologies {
+  position: relative;
   padding: 60px 20px;
   text-align: center;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-}
-
-.skills-header h2 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.skills-header p {
-  max-width: 600px;
-  margin: 0 auto;
-  color: white;
-}
-
-.skills-header hr {
-  width: 80px;
-  margin: 20px auto;
-  border: 1px solid rgba(255,255,255,0.4);
-}
-
-.skills-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.left, .right {
-  flex: 1;
-  min-width: 300px;
-  color: white;
-}
-
-.left h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.left p {
-  line-height: 1.6;
-}
-
-.skill-bar {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.skill-bar span {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.bar {
-  height: 8px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 10px;
   overflow: hidden;
 }
 
-.progress {
-  height: 100%;
-  background-color: #00bcd4;
-  width: 0%;
-  transition: width 1s ease;
-}
-
-.dbms { width: 100%; }
-.web { width: 95%; }
-.android { width: 90%; }
-.ios { width: 92%; }
-
-/* About section */
-.about {
-  padding: 60px 20px;
-  text-align: center;
+.technologies::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(8px);
+  z-index: -1;
 }
 
-.about-text h2 {
-  font-size: 2.2rem;
-  margin-bottom: 15px;
-  color: white;
-}
-
-.about-text p {
-  max-width: 700px;
-  margin: 0 auto 30px;
-  color: white;
-}
-
-.about-stats {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.stat-box {
-  flex: 1 1 200px;
-  max-width: 220px;
-  min-height: 160px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 12px;
-  padding: 20px;
-  color: white;
-  text-align: center;
-  transition: transform 0.3s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.stat-box:hover {
-  transform: translateY(-5px);
-}
-
-.stat-icon {
-  font-size: 2rem;
+.technologies h2 {
+  font-size: 2.5rem;
   margin-bottom: 10px;
-  color: var(--accent-color, #5f8ec0);
+  color: #a992ff; /* A purple shade from the image */
 }
 
-.stat-box h3 {
-  font-size: 2rem;
-  margin: 5px 0;
-}
-
-.stat-box p {
-  font-weight: 500;
-  margin: 0;
-  font-size: 0.95rem;
+.technologies p {
   color: #ccc;
+  margin-bottom: 40px;
 }
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.techCategory h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.techPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.techPills span {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.techPills span:hover {
+    background: rgba(169, 146, 255, 0.3);
+    border-color: rgba(169, 146, 255, 0.5);
+}
+
 
 /* Responsive */
 @media (max-width: 992px) {
   .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .techGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -256,13 +185,8 @@
   .grid {
     grid-template-columns: 1fr;
   }
-
-  .skills-content {
-    flex-direction: column;
-  }
-
-  .stat-box {
-    max-width: 100%;
-    min-width: 100%;
+  
+  .techGrid {
+    grid-template-columns: 1fr;
   }
 }
