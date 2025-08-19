@@ -6,7 +6,7 @@ import WhatsappButton from '@/components/WhatsappButton';
 import { ReactNode } from 'react';
 
 export const metadata = {
-  title: 'Alphaseam Enterprise',
+  title: 'Amsa Overseas',
   description: 'Professional IT Solutions',
 };
 
