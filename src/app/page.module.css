@@ -73,6 +73,7 @@
   color: #a992ff;
   display: block;
   margin-bottom: 20px;
+  min-height: 120px; 
 }
 
 .heroSection p {
@@ -253,17 +254,93 @@
   to { transform: translateX(-50%); }
 }
 
-/* Responsive */
+/* --- ✨ UPDATED & CONSOLIDATED RESPONSIVE SECTION --- */
+
+/* For Tablets and smaller devices */
 @media (max-width: 992px) {
+  .section {
+    padding: 70px 0;
+  }
+  .sectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
   .heroSection h1, .typingAnimation {
     font-size: 2.8rem;
+    min-height: 100px;
   }
   .whyUsGrid {
     grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .whyUsImage {
+    order: 2;
+  }
+  .whyUsList {
+    order: 1;
   }
 }
 
+/* For Mobile devices */
 @media (max-width: 768px) {
-  .sectionTitle { font-size: 2.2rem; }
-  .heroSection h1, .typingAnimation { font-size: 2.2rem; }
+  .contentWrapper {
+    padding: 0 15px;
+  }
+  .section {
+    padding: 60px 0;
+  }
+  .sectionTitle { 
+    font-size: 2.2rem; 
+  }
+  .heroSection {
+    min-height: 80vh;
+  }
+  .heroSection h1 {
+    font-size: 2rem;
+  }
+  .typingAnimation {
+    font-size: 2.2rem;
+    min-height: 90px;
+  }
+  .heroSection p {
+    font-size: 1rem;
+  }
+  .ctaButton {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+
+  .offeringsGrid {
+    /* ✨ PROBLEM FIX: Forcing single column on mobile to prevent overflow */
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .processGrid {
+    gap: 20px;
+  }
+  .glassCard {
+    padding: 30px;
+  }
+  .whyUsGrid {
+    gap: 30px;
+  }
+  .techLogo {
+    width: 120px;
+    margin: 0 15px;
+  }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+  .heroSection h1 {
+    font-size: 1.8rem;
+  }
+  .typingAnimation {
+    font-size: 1.9rem;
+    min-height: 80px;
+  }
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
 }

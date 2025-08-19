@@ -2,6 +2,12 @@
 .contactPageWrapper {
   color: white;
   font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box; /* Ensures padding doesn't add to the width */
+}
+
+/* Apply box-sizing to all child elements as well for consistency */
+.contactPageWrapper * {
+    box-sizing: border-box;
 }
 
 /* Fixed Background Video and Overlay */
@@ -36,6 +42,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 120px 20px 80px;
+  width: 100%; /* Explicitly set width */
 }
 
 /* Header Section */
@@ -204,21 +211,64 @@
   display: block;
 }
 
-/* Responsive Design */
+
+/* =================================== */
+/* ===== Responsive Adjustments ====== */
+/* =================================== */
+
+/* For Tablets and smaller desktops */
 @media (max-width: 992px) {
   .contactCard {
     grid-template-columns: 1fr; /* Stack columns on tablets */
   }
+  .contactInfo {
+    /* Add a border to separate the sections when stacked */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
 }
 
+/* For Tablets & Large Phones */
 @media (max-width: 768px) {
   .contactContent {
-    padding-top: 100px;
+    padding: 100px 20px 60px;
   }
   .contactHeader h1 {
     font-size: 2.5rem;
   }
+  .contactHeader p {
+      font-size: 1rem;
+  }
   .formRow {
     flex-direction: column;
+    gap: 20px; /* Keep the gap consistent */
   }
+  .contactInfo, .contactForm {
+      padding: 30px;
+  }
+  .mapSection iframe {
+      height: 350px;
+  }
+}
+
+/* For smaller mobile phones */
+@media (max-width: 480px) {
+    .contactContent {
+        padding: 80px 15px 40px;
+    }
+    .contactHeader h1 {
+        font-size: 2.1rem;
+    }
+    .contactInfo h3 {
+        font-size: 1.6rem;
+    }
+    .contactInfo, .contactForm {
+        padding: 25px;
+    }
+    .submitButton {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+    .mapSection iframe {
+        height: 300px;
+    }
 }

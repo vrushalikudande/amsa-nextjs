@@ -118,12 +118,55 @@
   font-weight: 500;
 }
 
-/* Responsive Adjustments */
+
+/* =================================== */
+/* ===== Responsive Adjustments ====== */
+/* =================================== */
+
+/* For Tablets and smaller desktops */
+@media (max-width: 992px) {
+    .projectsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+}
+
+/* For Tablets & Large Phones */
 @media (max-width: 768px) {
   .projectsContent {
-    padding-top: 100px;
+    padding: 100px 20px 60px;
   }
   .projectsHeader h1 {
     font-size: 2.8rem;
   }
+  .projectsHeader p {
+      font-size: 1rem;
+  }
+  .projectCard {
+      padding: 30px 25px;
+  }
+}
+
+/* For smaller mobile phones */
+@media (max-width: 480px) {
+    .projectsContent {
+        padding: 80px 15px 40px;
+    }
+    .projectsHeader {
+        margin-bottom: 50px;
+    }
+    .projectsHeader h1 {
+        font-size: 2.2rem;
+    }
+    /* Adjust grid to ensure cards don't get too small */
+    .projectsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .cardTitle {
+        font-size: 1.4rem;
+    }
+    .cardDescription {
+        font-size: 0.95rem;
+    }
 }

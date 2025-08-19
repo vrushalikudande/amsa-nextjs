@@ -38,7 +38,7 @@ const Header = () => {
     { path: '/projects', label: 'Project' },
     { path: '/career', label: 'Career' },
     { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' }, // Contact is now the last item
+    { path: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -62,7 +62,6 @@ const Header = () => {
         <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`}>
           <div className={styles.navLinks}>
             {menuItems.map(({ path, label }) => {
-              // Check if the current link is the Contact link to apply button style
               const isCtaButton = label === 'Contact';
               return (
                 <Link

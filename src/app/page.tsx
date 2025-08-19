@@ -10,7 +10,7 @@ import {
   FaCogs, FaLaptopCode, FaSyncAlt, // Offerings Icons
   FaAward, FaTools, FaGlobeAmericas, FaHandshake, // Reasons Icons
 } from "react-icons/fa";
-
+import Link from 'next/link';
 import styles from './page.module.css';
 
 // Data for sections
@@ -84,9 +84,9 @@ export default function Home() {
           <p data-aos="fade-up" data-aos-delay="200">
             We build beautiful, functional, and scalable digital products that drive growth.
           </p>
-          <button className={styles.ctaButton} data-aos="fade-up" data-aos-delay="400">
+          <Link href="/contact" className={styles.ctaButton} data-aos="fade-up" data-aos-delay="400">
             Get a Free Consultation
-          </button>
+          </Link>
         </section>
 
         {/* Offerings Section */}
@@ -122,7 +122,7 @@ export default function Home() {
            <h2 className={styles.sectionTitle}>Why Alphaseam?</h2>
            <div className={styles.whyUsGrid}>
              <div className={styles.whyUsImage} data-aos="fade-right">
-                {/* Replace with a relevant, high-quality image */}
+                {/* IMPORTANT: Make sure this image exists in your public/img/ folder */}
                 <Image src="/img/mission.jpg" alt="Team collaborating" width={500} height={500} />
              </div>
              <div className={styles.whyUsList} data-aos="fade-left">
@@ -142,7 +142,7 @@ export default function Home() {
           <div className={styles.marquee}>
             <div className={styles.marqueeContent}>
               {techLogos.concat(techLogos).map((logo, idx) => ( // Duplicate for seamless scroll
-                <div className={styles.techLogo} key={idx}>
+                <div className={styles.techLogo} key={`${logo.alt}-${idx}`}> {/* ✨ Unique key fix */}
                   <Image src={logo.src} alt={logo.alt} width={100} height={40} />
                 </div>
               ))}

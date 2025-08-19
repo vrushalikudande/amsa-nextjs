@@ -4,7 +4,7 @@ import styles from './WhatsappButton.module.css'; // Using CSS Modules
 
 const WhatsappButton = () => {
   const phoneNumber = "7222029111";
-  const message = "Hello, Tejas how are you ? Thank you";
+  const message = "Hey 👋 Welcome to AMSA! Hope you're having a great day. How can we help?";
 
   return (
     <a

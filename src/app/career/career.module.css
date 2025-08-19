@@ -141,15 +141,65 @@
   text-decoration: underline;
 }
 
-/* Responsive Adjustments */
+/* =================================== */
+/* ===== Responsive Adjustments ====== */
+/* =================================== */
+
+/* For Tablets and smaller desktops */
+@media (max-width: 992px) {
+    .careerContent {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+/* For Tablets & Large Phones */
 @media (max-width: 768px) {
   .careerContent {
     padding-top: 120px;
+    padding-bottom: 80px;
   }
   .careerHeader h1 {
     font-size: 2.8rem;
   }
   .sectionHeading {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
+  .introText {
+    font-size: 1rem;
+  }
+  .noOpenings {
+    padding: 30px;
+  }
+  .whyJoinUsGrid {
+    gap: 20px;
+  }
+}
+
+/* For smaller mobile phones */
+@media (max-width: 480px) {
+    .careerContent {
+        padding-top: 100px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .careerHeader {
+        margin-bottom: 60px;
+    }
+    .careerHeader h1 {
+        font-size: 2.2rem;
+    }
+    .sectionHeading {
+        font-size: 1.8rem;
+    }
+    .featureBox {
+        padding: 25px;
+    }
+    .featureBox h3 {
+        font-size: 1.2rem;
+    }
+    .noOpenings p {
+        font-size: 1rem;
+    }
 }

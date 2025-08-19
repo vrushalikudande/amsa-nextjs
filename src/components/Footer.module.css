@@ -4,9 +4,9 @@
   position: relative;
   background: linear-gradient(135deg, #101828 0%, #1D2939 100%);
   color: #eaecf0;
-  /* ✨ Height aur Spacing kaafi kam kar di hai */
-  padding: 30px 0 15px;
+  padding: 50px 0 25px;
   font-family: 'Poppins', sans-serif;
+  z-index: 10; /* Ensures footer is above fixed backgrounds */
 }
 
 .footer::before {
@@ -16,51 +16,46 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(to right, transparent, #007bff, transparent);
-  opacity: 0.7;
+  background: linear-gradient(to right, transparent, #a992ff, transparent);
+  opacity: 0.5;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
-/* ✨ Grid layout with tighter spacing */
 .footerGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px; /* Spacing kam ki hai */
-  padding-bottom: 25px;
+  gap: 45px; /* Spacing for desktop */
+  padding-bottom: 30px;
 }
 
 .footerColumn {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Spacing kam ki hai */
+  gap: 15px;
 }
 
 .footerLogo {
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .footerDescription {
-  font-size: 0.8rem; /* Thoda chhota font */
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: #d0d5dd;
   max-width: 300px;
 }
 
 .columnTitle {
-  font-size: 1rem; /* Thoda chhota title */
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 5px;
-  background: linear-gradient(to right, #00c6ff, #007bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 /* Links Styling */
@@ -70,66 +65,112 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Spacing kam ki hai */
+  gap: 12px;
 }
 
 .linkList a, .contactList a {
   color: #d0d5dd;
   text-decoration: none;
-  font-size: 0.85rem; /* Thoda chhota font */
+  font-size: 0.9rem;
   transition: all 0.2s ease-in-out;
+  display: inline-block; /* Added for transform to work correctly */
 }
 
-/* ✨ Simple & clean hover effect */
 .linkList a:hover {
   color: #ffffff;
-  transform: translateX(4px);
+  transform: translateX(5px);
+  text-shadow: 0 0 8px rgba(169, 146, 255, 0.5);
 }
 
-/* Glowing social icons */
+/* Social icons */
 .socialIcons {
   display: flex;
-  gap: 12px;
-  margin-top: 5px;
+  gap: 18px;
+  margin-top: 10px;
 }
 
 .socialIcons a {
   color: #d0d5dd;
-  font-size: 1.1rem; /* Icon size adjust ki hai */
-  border-radius: 50%;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
 }
 
 .socialIcons a:hover {
-  color: #fff;
-  transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+  color: #a992ff;
+  transform: translateY(-3px) scale(1.1);
 }
 
 /* Contact List Styling */
 .contactList li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.85rem;
+  gap: 12px;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .contactList svg {
-  margin-top: 3px;
+  margin-top: 5px;
   flex-shrink: 0;
-  color: #007bff;
+  color: #a992ff;
+  font-size: 1rem;
 }
 
-/* ✨ Final Compact Bottom Bar */
+/* Final Bottom Bar */
 .footerBottom {
   text-align: center;
-  padding-top: 15px;
-  margin-top: 20px; /* Margin kam kiya hai */
+  padding-top: 25px;
+  margin-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footerBottom p {
   margin: 0;
-  font-size: 0.75rem; /* Font chhota kiya hai */
+  font-size: 0.85rem;
   color: #98a2b3;
+}
+
+/* --- ✨ UPDATED RESPONSIVE SECTION --- */
+
+/* For Tablets */
+@media (max-width: 992px) {
+  .footerGrid {
+    gap: 35px;
+  }
+}
+
+/* For Mobile devices */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 20px;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .footerGrid {
+    /* ✨ Mobile par ab text left-aligned rahega jo zyada clean lagta hai */
+    text-align: left;
+  }
+  
+  .footerColumn {
+    /* ✨ align-items ko reset kar diya taaki text left se shuru ho */
+    align-items: flex-start;
+  }
+
+  .socialIcons {
+    /* ✨ social icons ab left aligned rahenge */
+    justify-content: flex-start;
+  }
+
+  .columnTitle {
+    font-size: 1rem; /* Title thoda chota */
+  }
+
+  .footerDescription,
+  .linkList a,
+  .contactList li {
+    font-size: 0.85rem; /* Font size thodi consistent */
+  }
 }

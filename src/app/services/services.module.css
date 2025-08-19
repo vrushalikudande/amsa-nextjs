@@ -59,6 +59,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-top: 80px; /* Add padding for navbar */
 }
 
 .heroSection h1 {
@@ -232,8 +233,76 @@
   font-size: 0.9rem;
 }
 
-/* Responsive */
+
+/* =================================== */
+/* ===== Responsive Adjustments ====== */
+/* =================================== */
+
+/* For Tablets and smaller desktops */
+@media (max-width: 992px) {
+    .servicesGrid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* For Tablets & Large Phones */
 @media (max-width: 768px) {
-  .sectionTitle { font-size: 2.2rem; }
-  .heroSection h1 { font-size: 2.5rem; }
+  .mainContent {
+      padding: 0 20px 60px;
+  }
+  .section {
+      padding: 50px 0;
+  }
+  .sectionTitle { 
+      font-size: 2.2rem; 
+      margin-bottom: 40px;
+  }
+  .heroSection {
+      min-height: 60vh;
+      padding-top: 60px;
+  }
+  .heroSection h1 { 
+      font-size: 2.5rem; 
+  }
+  .heroSection p {
+      font-size: 1.1rem;
+  }
+  .serviceCard {
+      padding: 30px;
+  }
+  .techTabsContainer {
+      padding: 25px;
+  }
+}
+
+/* For smaller mobile phones -- THIS IS THE NEW, IMPORTANT PART */
+@media (max-width: 480px) {
+    .mainContent {
+        padding: 0 15px 40px;
+    }
+    .heroSection h1 {
+        font-size: 2.1rem;
+    }
+    .heroSection p {
+        font-size: 1rem;
+    }
+    .ctaButton {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+    /* This is the key fix: switch to a single column */
+    .servicesGrid, .approachGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .sectionTitle {
+        font-size: 1.9rem;
+    }
+    .tabButton {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    .techTabsContainer {
+        padding: 20px;
+    }
 }
