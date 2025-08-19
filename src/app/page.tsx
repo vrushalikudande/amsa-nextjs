@@ -3,22 +3,28 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { TypeAnimation } from 'react-type-animation';
+import Image from "next/image";
 import {
-  FaCogs,
-  FaLaptopCode,
-  FaSyncAlt,
-  FaAward,
-  FaTools,
-  FaGlobeAmericas,
-  FaHandshake,
+  FaBullseye, FaPencilRuler, FaCode, FaRocket, // Process Icons
+  FaCogs, FaLaptopCode, FaSyncAlt, // Offerings Icons
+  FaAward, FaTools, FaGlobeAmericas, FaHandshake, // Reasons Icons
 } from "react-icons/fa";
 
 import styles from './page.module.css';
 
+// Data for sections
 const offerings = [
   { icon: <FaCogs />, title: "SAP ERP Solutions", desc: "Streamline your business operations with scalable ERP systems." },
-  { icon: <FaLaptopCode />, title: "Custom Software Development", desc: "Build intelligent and efficient applications." },
-  { icon: <FaSyncAlt />, title: "System Integration & Consulting", desc: "Optimize your IT infrastructure with expert guidance." },
+  { icon: <FaLaptopCode />, title: "Custom Software", desc: "Build intelligent and efficient applications tailored to your needs." },
+  { icon: <FaSyncAlt />, title: "System Integration", desc: "Optimize your IT infrastructure with our expert consulting." },
+];
+
+const processSteps = [
+  { icon: <FaBullseye />, title: "1. Discovery", desc: "We start by understanding your vision, goals, and requirements." },
+  { icon: <FaPencilRuler />, title: "2. Design & UX", desc: "We craft intuitive and beautiful user interfaces for the best experience." },
+  { icon: <FaCode />, title: "3. Development", desc: "Our expert developers bring the designs to life with clean, efficient code." },
+  { icon: <FaRocket />, title: "4. Deployment", desc: "We ensure a smooth launch and provide ongoing support for success." },
 ];
 
 const reasons = [
@@ -28,36 +34,68 @@ const reasons = [
   { icon: <FaHandshake />, text: "Agile & Customer-Centric Approach" },
 ];
 
+// Tech logos - replace with your actual logo paths
+const techLogos = [
+  { src: "/img/react.svg", alt: "React" },
+  { src: "/img/nodejs.svg", alt: "Node.js" },
+  { src: "/img/flutter.svg", alt: "Flutter" },
+  { src: "/img/sap.svg", alt: "SAP" },
+  { src: "/img/mongodb.svg", alt: "MongoDB" },
+  { src: "/img/aws.svg", alt: "AWS" },
+  { src: "/img/python.svg", alt: "Python" },
+  { src: "/img/figma.svg", alt: "Figma" },
+];
+
+
 export default function Home() {
   useEffect(() => {
-    AOS.init({ duration: 800 });
+    AOS.init({
+      duration: 800,
+      once: true, // Animation happens only once
+    });
   }, []);
 
   return (
-    <>
+    <div className={styles.homePageWrapper}>
       {/* Background video */}
-      {/* ✅ CORRECTED the className here to match the CSS file */}
-      <video autoPlay muted loop playsInline className={styles['hero-video-fixed']}>
-        <source src="/video/bg_Video.mp4" type="video/mp4" />
-      </video>
-
-      <div className={styles['content-wrapper']}>
+      <div className={styles.backgroundVideoContainer}>
+        <video autoPlay muted loop playsInline className={styles.backgroundVideo}>
+          <source src="/video/bg_Video.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.videoOverlay}></div>
+      </div>
+      
+      <main className={styles.contentWrapper}>
         {/* Hero Section */}
-        <section className={styles['hero-content']}>
-          <h1>Empowering Businesses Through Digital Innovation</h1>
-          <p>
-            Website & Mobile App Development | SEO | Scalable IT Solutions
+        <section className={styles.heroSection}>
+          <h1 data-aos="fade-up">Empowering Businesses Through</h1>
+          <TypeAnimation
+            sequence={[
+              'Digital Innovation', 2000,
+              'Custom Software', 2000,
+              'Scalable IT Solutions', 2000,
+              'Mobile App Development', 2000,
+            ]}
+            wrapper="span"
+            speed={50}
+            className={styles.typingAnimation}
+            repeat={Infinity}
+          />
+          <p data-aos="fade-up" data-aos-delay="200">
+            We build beautiful, functional, and scalable digital products that drive growth.
           </p>
-          <button className={`${styles['cta-button']} ${styles.pulse}`}>Get a Free Consultation</button>
+          <button className={styles.ctaButton} data-aos="fade-up" data-aos-delay="400">
+            Get a Free Consultation
+          </button>
         </section>
 
-        {/* Offerings */}
-        <section className={styles['card-section']} data-aos="fade-up">
-          <h2>Our Core Offerings</h2>
-          <div className={styles['offerings-list']}>
+        {/* Offerings Section */}
+        <section className={styles.section} data-aos="fade-up">
+          <h2 className={styles.sectionTitle}>Our Core Offerings</h2>
+          <div className={styles.offeringsGrid}>
             {offerings.map((item, idx) => (
-              <div className={styles.card} key={idx} data-aos="fade-up" data-aos-delay={idx * 100}>
-                <div className={styles.icon}>{item.icon}</div>
+              <div className={styles.glassCard} key={idx} data-aos="fade-up" data-aos-delay={idx * 100}>
+                <div className={styles.cardIcon}>{item.icon}</div>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
@@ -65,19 +103,53 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Reasons */}
-        <section className={styles['card-section']} data-aos="fade-up">
-          <h2>Why AMSA Overseas?</h2>
-          <div className={styles['reasons-list']}>
-            {reasons.map((reason, idx) => (
-              <div className={styles.card} key={idx} data-aos="fade-up" data-aos-delay={idx * 100}>
-                <div className={styles.icon}>{reason.icon}</div>
-                <p>{reason.text}</p>
-              </div>
-            ))}
+        {/* Our Process Section */}
+        <section className={styles.section} data-aos="fade-up">
+          <h2 className={styles.sectionTitle}>Our Process</h2>
+          <div className={styles.processGrid}>
+             {processSteps.map((step, idx) => (
+               <div className={styles.processStep} key={idx} data-aos="fade-up" data-aos-delay={idx * 150}>
+                 <div className={styles.processIcon}>{step.icon}</div>
+                 <h4>{step.title}</h4>
+                 <p>{step.desc}</p>
+               </div>
+             ))}
           </div>
         </section>
-      </div>
-    </>
+
+        {/* Why Choose Us Section */}
+        <section className={styles.section} data-aos="fade-up">
+           <h2 className={styles.sectionTitle}>Why Alphaseam?</h2>
+           <div className={styles.whyUsGrid}>
+             <div className={styles.whyUsImage} data-aos="fade-right">
+                {/* Replace with a relevant, high-quality image */}
+                <Image src="/img/mission.jpg" alt="Team collaborating" width={500} height={500} />
+             </div>
+             <div className={styles.whyUsList} data-aos="fade-left">
+               {reasons.map((reason, idx) => (
+                 <div className={styles.reasonItem} key={idx}>
+                   <div className={styles.reasonIcon}>{reason.icon}</div>
+                   <span>{reason.text}</span>
+                 </div>
+               ))}
+             </div>
+           </div>
+        </section>
+
+        {/* Technology Stack Section */}
+        <section className={styles.techSection}>
+          <h2 className={styles.sectionTitle}>Technology We Master</h2>
+          <div className={styles.marquee}>
+            <div className={styles.marqueeContent}>
+              {techLogos.concat(techLogos).map((logo, idx) => ( // Duplicate for seamless scroll
+                <div className={styles.techLogo} key={idx}>
+                  <Image src={logo.src} alt={logo.alt} width={100} height={40} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }

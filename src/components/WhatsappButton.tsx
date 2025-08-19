@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './WhatsappButton.module.css'; // Using CSS Modules
 
 const WhatsappButton = () => {
-  const phoneNumber = "917218072175";
+  const phoneNumber = "7222029111";
   const message = "Hello, Tejas how are you ? Thank you";
 
   return (

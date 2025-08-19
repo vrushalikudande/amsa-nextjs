@@ -1,46 +1,88 @@
+// components/Footer/Footer.tsx
+import Image from 'next/image';
 import Link from 'next/link';
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
-// import styles from './Footer.module.css';
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import styles from './Footer.module.css';
-// Correct ✅
-
 
 const Footer = () => {
+  const quickLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About Us' },
+    { href: '/services', label: 'Services' },
+    { href: '/project', label: 'Projects' },
+  ];
+
+  const legalLinks = [
+    { href: '/career', label: 'Career' },
+    { href: '/contact', label: 'Contact' },
+    // { href: '/privacy-policy', label: 'Privacy Policy' },
+    // { href: '/terms', label: 'Terms of Service' },
+  ];
+
   return (
     <footer className={styles.footer}>
-      <div className={`${styles.container} ${styles['footer-content']}`}>
-        {/* Left: Logo */}
-        <div className={styles['footer-logo']}>
-          <h3>AMSA Overseas</h3>
-          <p>Innovating with precision</p>
-        </div>
+      <div className={styles.container}>
+        {/* ✨ Main Grid Layout */}
+        <div className={styles.footerGrid}>
+          {/* Column 1: About & Socials */}
+          <div className={styles.footerColumn}>
+            <Link href="/" className={styles.footerLogo}>
+              <Image src="/img/logowhite.png" alt="AMSA Overseas Logo" width={130} height={50} />
+            </Link>
+            <p className={styles.footerDescription}>
+              Empowering businesses through digital innovation and scalable IT solutions with precision and expertise.
+            </p>
+            <div className={styles.socialIcons}>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
+            </div>
+          </div>
 
-        {/* Center: Social Media */}
-        <div className={styles['footer-socials-block']}>
-          <h4>Follow Us</h4>
-          <div className={styles['footer-socials']}>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
-              <FaInstagram />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <FaLinkedinIn />
-            </a>
+          {/* Column 2: Quick Links */}
+          <div className={styles.footerColumn}>
+            <h4 className={styles.columnTitle}>Quick Links</h4>
+            <ul className={styles.linkList}>
+              {quickLinks.map(link => (
+                <li key={link.href}><Link href={link.href}>{link.label}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Legal Links */}
+          <div className={styles.footerColumn}>
+            <h4 className={styles.columnTitle}>Support</h4>
+            <ul className={styles.linkList}>
+              {legalLinks.map(link => (
+                <li key={link.href}><Link href={link.href}>{link.label}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Contact Info */}
+          <div className={styles.footerColumn}>
+            <h4 className={styles.columnTitle}>Contact Us</h4>
+            <ul className={styles.contactList}>
+              <li>
+                <FaMapMarkerAlt />
+                <span>Gera's Imperium Rise, Hinjewadi, Pune, Maharashtra 411057</span>
+              </li>
+              <li>
+                <FaPhoneAlt />
+                <a href="tel:+917222029111">+91 7222029111</a>
+              </li>
+              <li>
+                <FaEnvelope />
+                <a href="mailto:info@amsaoverseas.com">info@amsaoverseas.com</a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Right: Contact Info */}
-        <div className={styles['footer-contact']}>
-          <p>Email: info@amsaoverseas.com</p>
-          <p>Phone: +91 0000000000</p>
+        {/* ✨ Clean Bottom Bar */}
+        <div className={styles.footerBottom}>
+          <p>&copy; {new Date().getFullYear()} AMSA Overseas. All Rights Reserved.</p>
         </div>
-      </div>
-
-      {/* Compact Bottom Copyright */}
-      <div className={styles['footer-copyright']}>
-        <p>&copy; {new Date().getFullYear()} AMSA Overseas. All rights reserved.</p>
       </div>
     </footer>
   );

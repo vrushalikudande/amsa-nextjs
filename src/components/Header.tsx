@@ -4,81 +4,86 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-// import styles from './Header.module.css';
 import styles from './Header.module.css';
-
- // ✅ Keep CSS as is
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // Effect to handle scroll detection
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
+  // Effect to close mobile menu on route change
+  useEffect(() => {
+    if (menuOpen) {
+      setMenuOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   const menuItems = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Services' },
+    { path: '/projects', label: 'Project' },
     { path: '/career', label: 'Career' },
     { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/contact', label: 'Contact' }, // Contact is now the last item
   ];
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
       <div className={styles.container}>
         {/* LOGO */}
         <div className={styles.logo}>
           <Link href="/">
             <Image
-              src={scrolled ? '/img/logoblack.png' : '/img/logowhite.png'}
-              alt="Logo"
-              width={120} // ✅ Add width
-              height={50} // ✅ Add height
+              src={scrolled || menuOpen ? '/img/logoblack.png' : '/img/logowhite.png'}
+              alt="Alphaseam Logo"
+              width={110}
+              height={45}
               priority
-              className={styles['logo-img']}
+              className={styles.logoImg}
             />
           </Link>
         </div>
 
-        {/* MENU ICON */}
-        <Image
-          src={scrolled ? '/img/menu.png' : '/img/menu2.png'}
-          alt="Menu"
-          width={30} // ✅ Add width
-          height={30} // ✅ Add height
-          className={styles['menu-icon']}
-          onClick={toggleMenu}
-        />
-
-        {/* NAV */}
+        {/* NAV LINKS */}
         <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`}>
-          <div className={styles['nav-links']}>
-            {menuItems.map(({ path, label }) => (
-              <Link
-                key={path}
-                href={path}
-                onClick={closeMenu}
-                className={pathname === path ? styles.active : ''}
-              >
-                {label}
-              </Link>
-            ))}
+          <div className={styles.navLinks}>
+            {menuItems.map(({ path, label }) => {
+              // Check if the current link is the Contact link to apply button style
+              const isCtaButton = label === 'Contact';
+              return (
+                <Link
+                  key={path}
+                  href={path}
+                  onClick={closeMenu}
+                  className={`${pathname === path ? styles.active : ''} ${isCtaButton ? styles.ctaButton : styles.navLink}`}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         </nav>
+
+        {/* MOBILE MENU ICON */}
+        <div className={styles.menuIcon} onClick={toggleMenu} role="button" tabIndex={0}>
+          <div className={`${styles.bar} ${styles.bar1}`}></div>
+          <div className={`${styles.bar} ${styles.bar2}`}></div>
+          <div className={`${styles.bar} ${styles.bar3}`}></div>
+        </div>
       </div>
     </header>
   );

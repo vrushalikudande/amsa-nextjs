@@ -1,64 +1,62 @@
-import type { Metadata } from "next";
+// app/services/ServicesClientPage.tsx  <-- THIS IS THE NEW FILE
+
+"use client";
+
+import { useState } from "react";
+// We don't need Metadata here
 import {
-  FaLaptopCode,
-  FaMobileAlt,
-  FaUsers,
-  FaCogs,
-  FaBug,
-  FaCloud,
-  FaShoppingCart,
-  FaDatabase,
-  FaTools,
-  FaSmile,
-  FaCheckCircle,
-  FaThumbsUp,
-  FaBolt,
+  FaLaptopCode, FaMobileAlt, FaUsers, FaCogs, FaShoppingCart, FaDatabase,
+  FaComments, FaPencilRuler, FaRocket
 } from "react-icons/fa";
 import styles from "./services.module.css";
 
-export const metadata: Metadata = {
-  title: "Services | Alphaseam Enterprise",
-  description: "Our services",
-};
-
+// Data for sections
 const services = [
   { title: "Website Development", description: "Modern, responsive websites using HTML5, CSS, JavaScript, React, and WordPress — designed to engage and convert.", icon: <FaLaptopCode /> },
   { title: "Mobile App Development", description: "Custom Android, iOS, and cross-platform (Flutter, React Native) mobile apps that solve real-world problems.", icon: <FaMobileAlt /> },
   { title: "SEO & Digital Marketing", description: "On-page, off-page, and technical SEO strategies that boost your search rankings and generate leads.", icon: <FaUsers /> },
   { title: "Full-Stack Development", description: "Complete solutions including frontend, backend (Node.js, PHP, Python), databases (MySQL, MongoDB), and APIs", icon: <FaCogs /> },
-  { title: "E-Commerce Developement", description: "Online store setup with custom checkout, cart, product pages, and secure payments.", icon: <FaShoppingCart /> },
+  { title: "E-Commerce Development", description: "Online store setup with custom checkout, cart, product pages, and secure payments.", icon: <FaShoppingCart /> },
   { title: "UI/UX Design", description: "Wireframes, prototypes, and clean design that enhances user experience and accessibility.", icon: <FaDatabase /> },
 ];
 
-export default function ServicesPage() {
-  return (
-    <div className={styles.servicesPageContainer}>
+const technologiesData = {
+  frontend: ["React.js", "Vue.js", "Angular", "JavaScript", "TypeScript", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS"],
+  backend: ["Node.js", "Express.js", "Python", "Java", ".NET", "PHP", "Laravel"],
+  mobile: ["React Native", "Flutter", "Swift", "Kotlin"],
+  cloud: ["AWS", "Azure", "Google Cloud", "Docker", "DigitalOcean", "Firebase"],
+  cms: ["WordPress", "Shopify"],
+  database: ["MySQL", "PostgreSQL", "MongoDB", "Firebase"],
+};
 
+// Rename the function to match the new file name
+export default function ServicesClientPage() { 
+  const [activeTab, setActiveTab] = useState('frontend');
+
+  return (
+    <div className={styles.servicesPageWrapper}>
       {/* Fixed background video */}
-      <div className={styles["services-video-section"]}>
-        <video autoPlay muted loop playsInline className={styles["services-video"]}>
+      <div className={styles.backgroundVideoContainer}>
+        <video autoPlay muted loop playsInline className={styles.backgroundVideo}>
           <source src="/video/bg3_Video.mp4" type="video/mp4" />
         </video>
-        <div className={styles["services-overlay"]}></div>
+        <div className={styles.videoOverlay}></div>
       </div>
 
       {/* Main scrolling content */}
-      <main className={styles["services-main-content"]}>
-        <section className={styles["hero-heading"]}>
-          <h1>Our Services</h1>
+      <main className={styles.mainContent}>
+        <section className={styles.heroSection}>
+          <h1>Our Expert Services</h1>
+          <p>Crafting Future-Ready Digital Solutions to Propel Your Business Forward</p>
+          <a href="#services-grid" className={styles.ctaButton}>Explore Services</a>
         </section>
 
-        <section className={styles.services}>
-          <p className={styles.description}>
-            Empowered by exceptional talent, Alphaseam Pvt Ltd elevates your digital
-            landscape by converging innovation and technology to craft bespoke software
-            solutions that drive business success.
-          </p>
-
-          <div className={styles.grid}>
+        {/* Services Grid Section */}
+        <section id="services-grid" className={styles.section}>
+          <div className={styles.servicesGrid}>
             {services.map((service, index) => (
-              <div className={styles.box} key={index}>
-                <div className={styles.icon}>{service.icon}</div>
+              <div className={styles.serviceCard} key={index}>
+                <div className={styles.cardIcon}>{service.icon}</div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
               </div>
@@ -66,46 +64,47 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Technologies We Use Section */}
-        <section className={styles.technologies}>
-          <h2>Technologies We Use</h2>
-          <p>We work with cutting-edge technologies to deliver modern solutions</p>
-          <div className={styles.techGrid}>
-            <div className={styles.techCategory}>
-              <h3>Frontend</h3>
-              <div className={styles.techPills}>
-                <span>React</span>
-                <span>Vue.js</span>
-                <span>Angular</span>
-                <span>TypeScript</span>
-              </div>
+        {/* Our Approach Section */}
+        <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Our Approach</h2>
+            <div className={styles.approachGrid}>
+                <div className={styles.approachStep}>
+                    <div className={styles.stepIcon}><FaComments /></div>
+                    <h4>1. Consultation</h4>
+                    <p>We begin by thoroughly understanding your goals and vision.</p>
+                </div>
+                <div className={styles.approachStep}>
+                    <div className={styles.stepIcon}><FaPencilRuler /></div>
+                    <h4>2. Design & Develop</h4>
+                    <p>Our team designs and develops robust solutions with precision.</p>
+                </div>
+                <div className={styles.approachStep}>
+                    <div className={styles.stepIcon}><FaRocket /></div>
+                    <h4>3. Launch & Support</h4>
+                    <p>We ensure a seamless launch and provide continuous support.</p>
+                </div>
             </div>
-            <div className={styles.techCategory}>
-              <h3>Backend</h3>
-              <div className={styles.techPills}>
-                <span>Node.js</span>
-                <span>Python</span>
-                <span>Java</span>
-                <span>.NET</span>
-              </div>
+        </section>
+
+        {/* Technologies Section with Tabs */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Technologies We Use</h2>
+          <div className={styles.techTabsContainer}>
+            <div className={styles.tabButtons}>
+              {Object.keys(technologiesData).map((key) => (
+                <button
+                  key={key}
+                  className={`${styles.tabButton} ${activeTab === key ? styles.active : ''}`}
+                  onClick={() => setActiveTab(key)}
+                >
+                  {key.charAt(0).toUpperCase() + key.slice(1)}
+                </button>
+              ))}
             </div>
-            <div className={styles.techCategory}>
-              <h3>Mobile</h3>
-              <div className={styles.techPills}>
-                <span>React Native</span>
-                <span>Flutter</span>
-                <span>Swift</span>
-                <span>Kotlin</span>
-              </div>
-            </div>
-            <div className={styles.techCategory}>
-              <h3>Cloud</h3>
-              <div className={styles.techPills}>
-                <span>AWS</span>
-                <span>Azure</span>
-                <span>Google Cloud</span>
-                <span>Docker</span>
-              </div>
+            <div className={styles.tabContent}>
+              {technologiesData[activeTab as keyof typeof technologiesData].map((tech) => (
+                <span key={tech} className={styles.techPill}>{tech}</span>
+              ))}
             </div>
           </div>
         </section>

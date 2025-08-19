@@ -1,0 +1,129 @@
+/* Main wrapper for the entire page */
+.projectsPageWrapper {
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Fixed Background Video and Overlay */
+.projectsBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  filter: hue-rotate(180deg);
+}
+
+.projectsVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.projectsOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Scrollable Content Area */
+.projectsContent {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px 80px;
+}
+
+/* Header Section */
+.projectsHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.projectsHeader h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.projectsHeader p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #e0e0e0;
+}
+
+/* Projects Grid */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Project Card (Glassmorphism) */
+.projectCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 35px 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  color: #a992ff;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+  flex-grow: 1; /* Pushes tags to the bottom */
+  margin-bottom: 25px;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cardTags span {
+  background: rgba(169, 146, 255, 0.15);
+  border: 1px solid rgba(169, 146, 255, 0.3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .projectsContent {
+    padding-top: 100px;
+  }
+  .projectsHeader h1 {
+    font-size: 2.8rem;
+  }
+}
