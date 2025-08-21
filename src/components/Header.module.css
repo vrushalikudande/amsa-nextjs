@@ -61,7 +61,7 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  color: #e2e8f0;              /* light for transparent header */
+  color: #e2e8f0;            /* light for transparent header */
   transition: color 0.3s ease;
   padding: 0.3rem 0;
   white-space: nowrap;
@@ -110,7 +110,7 @@
 
 /* =============== Hamburger =============== */
 .menuIcon {
-  display: none;               /* hidden on desktop */
+  display: none;              /* hidden on desktop */
   cursor: pointer;
   width: 28px;
   height: 22px;
@@ -119,8 +119,8 @@
   padding: 0;
   margin: 0;
   position: relative;
-  z-index: 1001;     
-    margin-right: 32px;          /* above the sliding nav */
+  z-index: 1001;    
+  margin-right: 32px;          /* above the sliding nav */
 }
 
 .bar {
@@ -130,7 +130,7 @@
   height: 3px;
   border-radius: 3px;
   transition: transform 0.35s ease, opacity 0.25s ease, background 0.3s ease;
-  background: #ffffff;         /* default (transparent header) */
+  background: #ffffff;        /* default (transparent header) */
 }
 .bar1 { top: 0; }
 .bar2 { top: 9.5px; }
@@ -148,6 +148,10 @@
 .menuOpen .bar3 { transform: translateY(-9.5px) rotate(-45deg); }
 
 /* =============== Mobile Nav Panel =============== */
+
+/* ✨ SOLUTION: Yeh empty class add ki hai taaki production build mein .open class delete na ho */
+.open {}
+
 @media (max-width: 1024px) {
   .nav {
     /* Hide desktop layout; use full-screen panel instead */
