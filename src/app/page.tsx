@@ -21,10 +21,10 @@ const offerings = [
 ];
 
 const processSteps = [
-  { icon: <FaBullseye />, title: "1. Discovery", desc: "We start by understanding your vision, goals, and requirements." },
-  { icon: <FaPencilRuler />, title: "2. Design & UX", desc: "We craft intuitive and beautiful user interfaces for the best experience." },
-  { icon: <FaCode />, title: "3. Development", desc: "Our expert developers bring the designs to life with clean, efficient code." },
-  { icon: <FaRocket />, title: "4. Deployment", desc: "We ensure a smooth launch and provide ongoing support for success." },
+  { icon: <FaBullseye />, title: " Discovery", desc: "We start by understanding your vision, goals, and requirements." },
+  { icon: <FaPencilRuler />, title: "Design & UX", desc: "We craft intuitive and beautiful user interfaces for the best experience." },
+  { icon: <FaCode />, title: " Development", desc: "Our expert developers bring the designs to life with clean, efficient code." },
+  { icon: <FaRocket />, title: "Deployment", desc: "We ensure a smooth launch and provide ongoing support for success." },
 ];
 
 const reasons = [
@@ -119,7 +119,7 @@ export default function Home() {
 
         {/* Why Choose Us Section */}
         <section className={styles.section} data-aos="fade-up">
-           <h2 className={styles.sectionTitle}>Why Alphaseam?</h2>
+           <h2 className={styles.sectionTitle}>Why Amsa?</h2>
            <div className={styles.whyUsGrid}>
              <div className={styles.whyUsImage} data-aos="fade-right">
                 {/* IMPORTANT: Make sure this image exists in your public/img/ folder */}
@@ -138,7 +138,7 @@ export default function Home() {
 
         {/* Technology Stack Section */}
         <section className={styles.techSection}>
-          <h2 className={styles.sectionTitle}>Technology We Master</h2>
+          <h2 className={styles.sectionTitle}>Technologies We Master</h2>
           <div className={styles.marquee}>
             <div className={styles.marqueeContent}>
               {techLogos.concat(techLogos).map((logo, idx) => ( // Duplicate for seamless scroll

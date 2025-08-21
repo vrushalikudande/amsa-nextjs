@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 
 export const metadata: Metadata = {
-  title: "About | Alphaseam Enterprise",
+  title: "About | AMSA OVERSEAS",
   description: "Learn about the mission, vision, and journey of Alphaseam Enterprise.",
 };
 
@@ -56,7 +56,7 @@ export default function AboutPage() {
       {/* fixed background video */}
       <div className={styles.backgroundVideo}>
         <video autoPlay muted loop playsInline>
-          <source src="/video/bg3_Video.mp4" type="video/mp4" />
+           <source src="/video/bg2_Video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className={styles.videoOverlay}></div>

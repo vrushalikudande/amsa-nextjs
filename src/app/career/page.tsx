@@ -3,7 +3,7 @@ import { FaLightbulb, FaUsers, FaChartLine, FaLaptopCode } from "react-icons/fa"
 import styles from "./career.module.css";
 
 export const metadata: Metadata = {
-  title: "Career | Alphaseam Enterprise",
+  title: "Career | AMSA OVERSEAS",
   description: "Explore career opportunities at Alphaseam Enterprise. Join our innovative team and grow with us.",
 };
 

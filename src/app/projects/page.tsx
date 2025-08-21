@@ -4,7 +4,7 @@ import { FaMobileAlt, FaLaptopCode, FaSearch } from "react-icons/fa";
 import styles from "./projects.module.css";
 
 export const metadata: Metadata = {
-  title: "Our Work | Alphaseam Enterprise",
+  title: "Our Work | AMSA OVERSEAS",
   description: "Explore our portfolio of successful projects and case studies.",
 };
 
@@ -26,7 +26,7 @@ const projectsData = [
   },
   {
     icon: <FaSearch />,
-    title: "SEO for PharmaCo",
+    title: "SEO For PharmaCo",
     description: "Executed a complete SEO and blog strategy that successfully boosted the client's organic traffic by over 300% in just 3 months.",
     tags: ["SEO", "Content Strategy", "Analytics"],
     image: "/images/project-seo.jpg" // Placeholder image path

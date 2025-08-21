@@ -1,13 +1,34 @@
 // app/blog/page.tsx
+
+// ✨ CHANGE 1: Client Component banana zaroori hai event handling (onClick) ke liye
+"use client"; 
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./blog.module.css";
+import { Inter, Poppins } from 'next/font/google';
 
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-inter',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-poppins',
+});
+
+// Note: Metadata export Client Components mein aese kaam nahi karta. 
+// Isko layout.tsx mein move karna behtar practice hai. Abhi ke liye aese hi rakhte hain.
+/*
 export const metadata: Metadata = {
-  title: "Blog | Alphaseam Enterprise",
+  title: "Blog | AMSA OVERSEAS",
   description: "Insights, stories, and updates from the forefront of technology and innovation.",
 };
+*/
 
 const blogPosts = [
     {
@@ -52,8 +73,17 @@ export default function BlogPage() {
   const featuredPost = blogPosts[0];
   const otherPosts = blogPosts.slice(1);
 
+  // ✨ CHANGE 2: Smooth scroll ke liye function banaya hai
+  const handleScroll = () => {
+    const element = document.getElementById("posts-grid-section");
+    if (element) {
+      // Yeh line smooth scrolling karegi
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <>
+    <div className={`${inter.variable} ${poppins.variable}`}>
       <div className={styles.blogVideoContainer}>
         <video autoPlay muted loop playsInline className={styles.blogVideo}>
           <source src="/video/bg3_Video.mp4" type="video/mp4" />
@@ -63,10 +93,14 @@ export default function BlogPage() {
 
       <main className={styles.blogContent}>
         <header className={styles.blogHeader}>
-          <h1 className={styles.blogTitle}>From the Alphaseam Blog</h1>
+          <h1 className={styles.blogTitle}>From The Amsa Blog</h1>
           <p className={styles.blogSubtitle}>
             Insights, stories, and updates to help you navigate the future of technology.
           </p>
+          {/* ✨ CHANGE 3: Explore Posts ka button add kiya hai */}
+          <button onClick={handleScroll} className={styles.exploreButton}>
+            Explore Posts
+          </button>
         </header>
 
         <section className={styles.featuredSection}>
@@ -92,7 +126,8 @@ export default function BlogPage() {
           </Link>
         </section>
 
-        <section className={styles.postsGrid}>
+        {/* ✨ CHANGE 4: Yahan 'id' add kiya hai taaki scroll function isse target kar sake */}
+        <section id="posts-grid-section" className={styles.postsGrid}>
           {otherPosts.map((post) => (
             <Link href={`/blog/${post.id}`} key={post.id} className={styles.blogCard}>
               <div className={styles.cardImageContainer}>
@@ -104,16 +139,15 @@ export default function BlogPage() {
                 />
               </div>
               <div className={styles.cardContent}>
-                 <div className={styles.cardTags}>
-                  {post.tags.map(tag => <span key={tag}>{tag}</span>)}
-                </div>
+                  <div className={styles.cardTags}>
+                   {post.tags.map(tag => <span key={tag}>{tag}</span>)}
+                  </div>
                 <h3 className={styles.cardTitle}>{post.title}</h3>
                 <p className={styles.cardDescription}>{post.description}</p>
                 <div className={styles.cardFooter}>
                   <div className={styles.cardMeta}>
                     <span>By {post.author}</span>
                   </div>
-                  {/* ✨ "Read More" link add kiya hai */}
                   <span className={styles.readMoreLink}>Read More →</span>
                 </div>
               </div>
@@ -121,6 +155,6 @@ export default function BlogPage() {
           ))}
         </section>
       </main>
-    </>
+    </div>
   );
 }

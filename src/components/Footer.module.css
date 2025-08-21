@@ -1,12 +1,13 @@
-/* components/Footer/Footer.module.css */
+/* components/Footer/Footer.module.css - OPTION 2: ANIMATED BORDER */
 
 .footer {
   position: relative;
+  /* ✨ Static dark background wapas le aaye hain */
   background: linear-gradient(135deg, #101828 0%, #1D2939 100%);
   color: #eaecf0;
   padding: 50px 0 25px;
   font-family: 'Poppins', sans-serif;
-  z-index: 10; /* Ensures footer is above fixed backgrounds */
+  z-index: 10;
 }
 
 .footer::before {
@@ -16,8 +17,16 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(to right, transparent, #a992ff, transparent);
-  opacity: 0.5;
+  /* ✨ Yahan line ko animated gradient banaya hai */
+  background: linear-gradient(90deg, transparent, #a992ff, #fff, #a992ff, transparent);
+  background-size: 200% 100%;
+  animation: borderAnimation 5s linear infinite;
+}
+
+/* ✨ Border ke liye naya animation */
+@keyframes borderAnimation {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .container {
@@ -29,7 +38,7 @@
 .footerGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 45px; /* Spacing for desktop */
+  gap: 45px;
   padding-bottom: 30px;
 }
 
@@ -58,7 +67,6 @@
   color: #fff;
 }
 
-/* Links Styling */
 .linkList, .contactList {
   list-style: none;
   padding: 0;
@@ -73,7 +81,7 @@
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.2s ease-in-out;
-  display: inline-block; /* Added for transform to work correctly */
+  display: inline-block;
 }
 
 .linkList a:hover {
@@ -82,7 +90,6 @@
   text-shadow: 0 0 8px rgba(169, 146, 255, 0.5);
 }
 
-/* Social icons */
 .socialIcons {
   display: flex;
   gap: 18px;
@@ -100,7 +107,6 @@
   transform: translateY(-3px) scale(1.1);
 }
 
-/* Contact List Styling */
 .contactList li {
   display: flex;
   align-items: flex-start;
@@ -116,7 +122,6 @@
   font-size: 1rem;
 }
 
-/* Final Bottom Bar */
 .footerBottom {
   text-align: center;
   padding-top: 25px;
@@ -130,47 +135,34 @@
   color: #98a2b3;
 }
 
-/* --- ✨ UPDATED RESPONSIVE SECTION --- */
-
-/* For Tablets */
+/* --- Responsive Section --- */
 @media (max-width: 992px) {
   .footerGrid {
     gap: 35px;
   }
 }
-
-/* For Mobile devices */
 @media (max-width: 768px) {
   .footer {
     padding: 40px 0 20px;
   }
-
   .container {
     padding: 0 1.5rem;
   }
-
   .footerGrid {
-    /* ✨ Mobile par ab text left-aligned rahega jo zyada clean lagta hai */
     text-align: left;
   }
-  
   .footerColumn {
-    /* ✨ align-items ko reset kar diya taaki text left se shuru ho */
     align-items: flex-start;
   }
-
   .socialIcons {
-    /* ✨ social icons ab left aligned rahenge */
     justify-content: flex-start;
   }
-
   .columnTitle {
-    font-size: 1rem; /* Title thoda chota */
+    font-size: 1rem;
   }
-
   .footerDescription,
   .linkList a,
   .contactList li {
-    font-size: 0.85rem; /* Font size thodi consistent */
+    font-size: 0.85rem;
   }
 }

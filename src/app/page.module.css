@@ -39,14 +39,19 @@
 
 /* General Section Styling */
 .section {
-  padding: 80px 0;
+  padding: 60px 0; /* ✨ UPDATED: Reduced padding from 80px */
+}
+
+.techSection {
+  padding: 60px 0; /* ✨ UPDATED: Reduced padding from 80px */
+  overflow: hidden;
 }
 
 .sectionTitle {
   text-align: center;
   font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 40px; /* ✨ UPDATED: Reduced margin from 50px */
   color: #fff;
 }
 
@@ -58,7 +63,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 40px; /* ✨ UPDATED: Reduced bottom padding */
 }
 
 .heroSection h1 {
@@ -104,7 +109,7 @@
 .offeringsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 25px; /* ✨ UPDATED: Slightly reduced gap */
 }
 
 .glassCard {
@@ -112,7 +117,7 @@
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
-  padding: 35px;
+  padding: 30px; /* ✨ UPDATED: Reduced padding */
   text-align: center;
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -175,7 +180,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 50px;
+  gap: 40px; /* ✨ UPDATED: Reduced gap */
 }
 
 .whyUsImage img {
@@ -187,7 +192,7 @@
 .whyUsList {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px; /* ✨ UPDATED: Reduced gap */
 }
 
 .reasonItem {
@@ -211,11 +216,6 @@
 }
 
 /* Technology Stack Section (Marquee) */
-.techSection {
-  padding: 80px 0;
-  overflow: hidden;
-}
-
 .marquee {
   position: relative;
   width: 100vw;
@@ -258,12 +258,12 @@
 
 /* For Tablets and smaller devices */
 @media (max-width: 992px) {
-  .section {
-    padding: 70px 0;
+  .section, .techSection {
+    padding: 50px 0; /* ✨ UPDATED */
   }
   .sectionTitle {
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 35px; /* ✨ UPDATED */
   }
   .heroSection h1, .typingAnimation {
     font-size: 2.8rem;
@@ -286,8 +286,8 @@
   .contentWrapper {
     padding: 0 15px;
   }
-  .section {
-    padding: 60px 0;
+  .section, .techSection {
+    padding: 40px 0; /* ✨ UPDATED */
   }
   .sectionTitle { 
     font-size: 2.2rem; 
@@ -309,18 +309,15 @@
     padding: 12px 28px;
     font-size: 0.95rem;
   }
-
   .offeringsGrid {
-    /* ✨ PROBLEM FIX: Forcing single column on mobile to prevent overflow */
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
   .processGrid {
     gap: 20px;
   }
   .glassCard {
-    padding: 30px;
+    padding: 25px; /* ✨ UPDATED */
   }
   .whyUsGrid {
     gap: 30px;
