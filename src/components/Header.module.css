@@ -150,7 +150,11 @@
 /* =============== Mobile Nav Panel =============== */
 
 /* ✨ SOLUTION: Yeh empty class add ki hai taaki production build mein .open class delete na ho */
-.open {}
+/* ✨ NEW SOLUTION: This is a stronger fix to prevent CSS purging */
+.open {
+  /* Yeh property final look ko affect nahi karegi lekin build tool ko isse 'real' class maanne par majboor karegi */
+  will-change: transform, opacity;
+}
 
 @media (max-width: 1024px) {
   .nav {
