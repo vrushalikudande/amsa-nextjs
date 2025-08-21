@@ -2,6 +2,8 @@
 .homePageWrapper {
   color: white;
   font-family: 'Poppins', sans-serif;
+  position: relative; /* ✨ ADDED: Positioning context ke liye zaroori */
+  overflow: clip;    /* ✨ ADDED: Extra space ko strictly cut karne ke liye */
 }
 
 .backgroundVideoContainer {

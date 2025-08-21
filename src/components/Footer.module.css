@@ -1,168 +1,247 @@
-/* components/Footer/Footer.module.css - OPTION 2: ANIMATED BORDER */
-
 .footer {
-  position: relative;
-  /* ✨ Static dark background wapas le aaye hain */
-  background: linear-gradient(135deg, #101828 0%, #1D2939 100%);
-  color: #eaecf0;
-  padding: 50px 0 25px;
-  font-family: 'Poppins', sans-serif;
-  z-index: 10;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  /* ✨ Yahan line ko animated gradient banaya hai */
-  background: linear-gradient(90deg, transparent, #a992ff, #fff, #a992ff, transparent);
-  background-size: 200% 100%;
-  animation: borderAnimation 5s linear infinite;
-}
-
-/* ✨ Border ke liye naya animation */
-@keyframes borderAnimation {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  background: #0d0d0d;
+  color: #fff;
+  padding: 60px 20px 20px;
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .footerGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 45px;
-  padding-bottom: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
 }
 
 .footerColumn {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
 .footerLogo {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footerDescription {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: #d0d5dd;
-  max-width: 300px;
-}
-
-.columnTitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.linkList, .contactList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.linkList a, .contactList a {
-  color: #d0d5dd;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: all 0.2s ease-in-out;
-  display: inline-block;
-}
-
-.linkList a:hover {
-  color: #ffffff;
-  transform: translateX(5px);
-  text-shadow: 0 0 8px rgba(169, 146, 255, 0.5);
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.6;
 }
 
 .socialIcons {
   display: flex;
-  gap: 18px;
-  margin-top: 10px;
+  gap: 12px;
 }
 
 .socialIcons a {
-  color: #d0d5dd;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
+  background: #222;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s ease;
 }
 
 .socialIcons a:hover {
-  color: #a992ff;
-  transform: translateY(-3px) scale(1.1);
+  background: #e63946;
+  transform: scale(1.1);
+}
+
+.columnTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+  position: relative;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 8px;
+}
+
+.linkList li a {
+  color: #aaa;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.linkList li a:hover {
+  color: #e63946;
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contactList li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.contactList a {
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.contactList a:hover {
+  color: #e63946;
+}
+
+.mapContainer {
+  margin-top: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+.footer {
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 40px 20px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 0.7fr 1.3fr;
+  gap: 35px; /* kam kiya */
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerLogo {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.footerDescription {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcons a {
+  font-size: 1.2rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #00aaff;
+}
+
+.columnTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.linkList,
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 6px;
+}
+
+.linkList a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.linkList a:hover {
+  color: #fff;
 }
 
 .contactList li {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 8px;
+  margin-bottom: 8px;
   font-size: 0.9rem;
-  line-height: 1.6;
+  color: #ccc;
 }
 
-.contactList svg {
-  margin-top: 5px;
-  flex-shrink: 0;
-  color: #a992ff;
-  font-size: 1rem;
+.contactList a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contactList a:hover {
+  color: #fff;
 }
 
 .footerBottom {
-  text-align: center;
-  padding-top: 25px;
-  margin-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #aaa;
 }
 
-.footerBottom p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #98a2b3;
-}
-
-/* --- Responsive Section --- */
-@media (max-width: 992px) {
-  .footerGrid {
-    gap: 35px;
-  }
-}
+/* ✅ Responsive */
 @media (max-width: 768px) {
-  .footer {
-    padding: 40px 0 20px;
-  }
-  .container {
-    padding: 0 1.5rem;
-  }
   .footerGrid {
-    text-align: left;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
-  .footerColumn {
-    align-items: flex-start;
+}
+
+@media (max-width: 500px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .contactList li {
+    justify-content: center;
   }
   .socialIcons {
-    justify-content: flex-start;
-  }
-  .columnTitle {
-    font-size: 1rem;
-  }
-  .footerDescription,
-  .linkList a,
-  .contactList li {
-    font-size: 0.85rem;
+    justify-content: center;
   }
 }

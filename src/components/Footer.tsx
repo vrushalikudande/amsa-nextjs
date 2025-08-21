@@ -1,7 +1,14 @@
 // components/Footer/Footer.tsx
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+} from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -15,27 +22,52 @@ const Footer = () => {
   const legalLinks = [
     { href: '/career', label: 'Career' },
     { href: '/contact', label: 'Contact' },
-    // { href: '/privacy-policy', label: 'Privacy Policy' },
-    // { href: '/terms', label: 'Terms of Service' },
   ];
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* ✨ Main Grid Layout */}
+        {/* ✨ Grid Layout */}
         <div className={styles.footerGrid}>
-          {/* Column 1: About & Socials */}
+          {/* Column 1: About */}
           <div className={styles.footerColumn}>
             <Link href="/" className={styles.footerLogo}>
-              <Image src="/img/logowhite.png" alt="AMSA Overseas Logo" width={130} height={50} />
+              <Image
+                src="/img/logowhite.png"
+                alt="AMSA Overseas Logo"
+                width={120}
+                height={45}
+              />
             </Link>
             <p className={styles.footerDescription}>
-              Empowering businesses through digital innovation and scalable IT solutions with precision and expertise.
+              Empowering businesses through digital innovation and scalable IT
+              solutions with precision and expertise.
             </p>
             <div className={styles.socialIcons}>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
             </div>
           </div>
 
@@ -43,29 +75,35 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h4 className={styles.columnTitle}>Quick Links</h4>
             <ul className={styles.linkList}>
-              {quickLinks.map(link => (
-                <li key={link.href}><Link href={link.href}>{link.label}</Link></li>
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Legal Links */}
+          {/* Column 3: Support */}
           <div className={styles.footerColumn}>
             <h4 className={styles.columnTitle}>Support</h4>
             <ul className={styles.linkList}>
-              {legalLinks.map(link => (
-                <li key={link.href}><Link href={link.href}>{link.label}</Link></li>
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
+          {/* Column 4: Contact */}
           <div className={styles.footerColumn}>
             <h4 className={styles.columnTitle}>Contact Us</h4>
             <ul className={styles.contactList}>
               <li>
                 <FaMapMarkerAlt />
-                <span>Gera's Imperium Rise, Hinjewadi, Pune, Maharashtra 411057</span>
+                <span>
+                  Gera's Imperium Rise, Hinjewadi, Pune, Maharashtra 411057
+                </span>
               </li>
               <li>
                 <FaPhoneAlt />
@@ -73,15 +111,20 @@ const Footer = () => {
               </li>
               <li>
                 <FaEnvelope />
-                <a href="mailto:info@amsaoverseas.com">info@amsaoverseas.com</a>
+                <a href="mailto:info@amsaoverseas.com">
+                  info@amsaoverseas.com
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* ✨ Clean Bottom Bar */}
+        {/* ✨ Bottom Bar */}
         <div className={styles.footerBottom}>
-          <p>&copy; {new Date().getFullYear()} AMSA Overseas. All Rights Reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} AMSA Overseas. All Rights
+            Reserved.
+          </p>
         </div>
       </div>
     </footer>

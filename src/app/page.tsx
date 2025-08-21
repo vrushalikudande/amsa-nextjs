@@ -48,11 +48,18 @@ const techLogos = [
 
 
 export default function Home() {
+  // ✨ YAHAN CHANGE KIYA HAI
   useEffect(() => {
     AOS.init({
       duration: 800,
       once: true, // Animation happens only once
     });
+
+    // White space issue fix karne ke liye yeh line add ki hai
+    setTimeout(() => {
+      AOS.refresh();
+    }, 100);
+    
   }, []);
 
   return (
@@ -107,33 +114,33 @@ export default function Home() {
         <section className={styles.section} data-aos="fade-up">
           <h2 className={styles.sectionTitle}>Our Process</h2>
           <div className={styles.processGrid}>
-             {processSteps.map((step, idx) => (
-               <div className={styles.processStep} key={idx} data-aos="fade-up" data-aos-delay={idx * 150}>
-                 <div className={styles.processIcon}>{step.icon}</div>
-                 <h4>{step.title}</h4>
-                 <p>{step.desc}</p>
-               </div>
-             ))}
+            {processSteps.map((step, idx) => (
+              <div className={styles.processStep} key={idx} data-aos="fade-up" data-aos-delay={idx * 150}>
+                <div className={styles.processIcon}>{step.icon}</div>
+                <h4>{step.title}</h4>
+                <p>{step.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Why Choose Us Section */}
         <section className={styles.section} data-aos="fade-up">
-           <h2 className={styles.sectionTitle}>Why Amsa?</h2>
-           <div className={styles.whyUsGrid}>
-             <div className={styles.whyUsImage} data-aos="fade-right">
-                {/* IMPORTANT: Make sure this image exists in your public/img/ folder */}
-                <Image src="/img/mission.jpg" alt="Team collaborating" width={500} height={500} />
-             </div>
-             <div className={styles.whyUsList} data-aos="fade-left">
-               {reasons.map((reason, idx) => (
-                 <div className={styles.reasonItem} key={idx}>
-                   <div className={styles.reasonIcon}>{reason.icon}</div>
-                   <span>{reason.text}</span>
-                 </div>
-               ))}
-             </div>
-           </div>
+          <h2 className={styles.sectionTitle}>Why Amsa?</h2>
+          <div className={styles.whyUsGrid}>
+            <div className={styles.whyUsImage} data-aos="fade-right">
+              {/* IMPORTANT: Make sure this image exists in your public/img/ folder */}
+              <Image src="/img/mission.jpg" alt="Team collaborating" width={500} height={500} />
+            </div>
+            <div className={styles.whyUsList} data-aos="fade-left">
+              {reasons.map((reason, idx) => (
+                <div className={styles.reasonItem} key={idx}>
+                  <div className={styles.reasonIcon}>{reason.icon}</div>
+                  <span>{reason.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* Technology Stack Section */}

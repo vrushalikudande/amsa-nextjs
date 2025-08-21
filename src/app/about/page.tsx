@@ -56,7 +56,7 @@ export default function AboutPage() {
       {/* fixed background video */}
       <div className={styles.backgroundVideo}>
         <video autoPlay muted loop playsInline>
-           <source src="/video/bg2_Video.mp4" type="video/mp4" />
+          <source src="/video/bg3_Video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className={styles.videoOverlay}></div>
@@ -66,7 +66,7 @@ export default function AboutPage() {
       <main className={styles.aboutContent}>
         {/* Who We Are */}
         <section className={styles.aboutHeader}>
-          <h1>Who We Are</h1>
+          <h1>Who Are We ?</h1>
           <p>
             Alphaseam Enterprise is a dynamic IT company committed to helping 
             businesses grow in the digital era. Founded in Pune, we specialize in 

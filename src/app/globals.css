@@ -42,4 +42,11 @@ a {
 } */
 
 
-html { scroll-behavior: smooth; }
+/* html { scroll-behavior: smooth; } */
+
+/* app/globals.css */
+
+html,
+body {
+  overflow-x: hidden;
+}

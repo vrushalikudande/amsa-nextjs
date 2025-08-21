@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -11,25 +11,27 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Effect to handle scroll detection
+  // Scroll state
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Effect to close mobile menu on route change
+  // Close mobile menu on route change
   useEffect(() => {
-    if (menuOpen) {
-      setMenuOpen(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setMenuOpen(false);
   }, [pathname]);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  // Lock body scroll when menu is open (no CSS module hacks)
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = menuOpen ? 'hidden' : original || '';
+    return () => {
+      document.body.style.overflow = original || '';
+    };
+  }, [menuOpen]);
 
   const menuItems = [
     { path: '/', label: 'Home' },
@@ -38,15 +40,19 @@ const Header = () => {
     { path: '/projects', label: 'Project' },
     { path: '/career', label: 'Career' },
     { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/contact', label: 'Contact' }, // CTA
   ];
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
+    <header
+      className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${
+        menuOpen ? styles.menuOpen : ''
+      }`}
+    >
       <div className={styles.container}>
-        {/* LOGO */}
+        {/* Logo */}
         <div className={styles.logo}>
-          <Link href="/">
+          <Link href="/" aria-label="Go to homepage">
             <Image
               src={scrolled || menuOpen ? '/img/logoblack.png' : '/img/logowhite.png'}
               alt="Alphaseam Logo"
@@ -58,17 +64,24 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* NAV LINKS */}
-        <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`}>
+        {/* Desktop / Mobile Nav */}
+        <nav
+          id="primaryNav"
+          className={`${styles.nav} ${menuOpen ? styles.open : ''}`}
+          aria-label="Primary"
+        >
           <div className={styles.navLinks}>
             {menuItems.map(({ path, label }) => {
-              const isCtaButton = label === 'Contact';
+              const isActive = pathname === path;
+              const isCTA = label === 'Contact';
               return (
                 <Link
                   key={path}
                   href={path}
-                  onClick={closeMenu}
-                  className={`${pathname === path ? styles.active : ''} ${isCtaButton ? styles.ctaButton : styles.navLink}`}
+                  className={`${isCTA ? styles.ctaButton : styles.navLink} ${
+                    isActive && !isCTA ? styles.active : ''
+                  }`}
+                  onClick={() => setMenuOpen(false)}
                 >
                   {label}
                 </Link>
@@ -77,12 +90,19 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* MOBILE MENU ICON */}
-        <div className={styles.menuIcon} onClick={toggleMenu} role="button" tabIndex={0}>
-          <div className={`${styles.bar} ${styles.bar1}`}></div>
-          <div className={`${styles.bar} ${styles.bar2}`}></div>
-          <div className={`${styles.bar} ${styles.bar3}`}></div>
-        </div>
+        {/* Hamburger */}
+        <button
+          type="button"
+          className={styles.menuIcon}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="primaryNav"
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <span className={`${styles.bar} ${styles.bar1}`} />
+          <span className={`${styles.bar} ${styles.bar2}`} />
+          <span className={`${styles.bar} ${styles.bar3}`} />
+        </button>
       </div>
     </header>
   );
