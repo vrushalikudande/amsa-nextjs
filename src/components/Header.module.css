@@ -13,9 +13,8 @@
 
 .container {
   max-width: 1300px;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
-  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,6 +52,7 @@
   display: flex;
   align-items: center;
   gap: 2.2rem;
+  transition: gap 0.3s ease;
 }
 
 /* Base link */
@@ -61,15 +61,15 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  color: #e2e8f0;            /* light for transparent header */
-  transition: color 0.3s ease;
+  color: #e2e8f0;
+  transition: color 0.3s ease, font-size 0.3s ease;
   padding: 0.3rem 0;
   white-space: nowrap;
 }
 
 .scrolled .navLink,
 .menuOpen .navLink {
-  color: #1a202c;              /* dark when bg is white */
+  color: #1a202c;
 }
 
 .navLink:hover { color: #00A3FF; }
@@ -100,7 +100,7 @@
   border-radius: 999px;
   background: linear-gradient(135deg, #007BFF, #00C6FF);
   box-shadow: 0 6px 16px rgba(0, 123, 255, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, padding 0.3s ease;
   white-space: nowrap;
 }
 .ctaButton:hover {
@@ -110,7 +110,7 @@
 
 /* =============== Hamburger =============== */
 .menuIcon {
-  display: none;              /* hidden on desktop */
+  display: none;
   cursor: pointer;
   width: 28px;
   height: 22px; 
@@ -119,8 +119,7 @@
   padding: 0;
   margin: 0;
   position: relative;
-  z-index: 1001;    
-  margin-right: 32px;          /* above the sliding nav */
+  z-index: 1001;
 }
 
 .bar {
@@ -130,35 +129,42 @@
   height: 3px;
   border-radius: 3px;
   transition: transform 0.35s ease, opacity 0.25s ease, background 0.3s ease;
-  background: #ffffff;        /* default (transparent header) */
+  background: #ffffff;
 }
 .bar1 { top: 0; }
 .bar2 { top: 9.5px; }
 .bar3 { bottom: 0; }
 
-/* Bars turn dark when header is white */
 .scrolled .bar,
 .menuOpen .bar {
   background: #1a1a1a;
 }
 
-/* Turn into 'X' when open */
 .menuOpen .bar1 { transform: translateY(9.5px) rotate(45deg); }
 .menuOpen .bar2 { opacity: 0; }
 .menuOpen .bar3 { transform: translateY(-9.5px) rotate(-45deg); }
 
-/* =============== Mobile Nav Panel =============== */
 
-/* ✨ SOLUTION: Yeh empty class add ki hai taaki production build mein .open class delete na ho */
-/* ✨ NEW SOLUTION: This is a stronger fix to prevent CSS purging */
-.open {
-  /* Yeh property final look ko affect nahi karegi lekin build tool ko isse 'real' class maanne par majboor karegi */
-  will-change: transform, opacity;
+/* ================================================= */
+/* ===== ✨ IMPROVED RESPONSIVE BREAKPOINTS ✨ ===== */
+/* ================================================= */
+
+/* For Small Laptops (1025px to 1200px) */
+@media (max-width: 1200px) {
+  .navLinks {
+    gap: 1.5rem; /* Reduce space between links */
+  }
+  .navLink {
+    font-size: 0.95rem; /* Slightly smaller font */
+  }
+  .ctaButton {
+    padding: 0.5rem 1.1rem; /* Slightly smaller button */
+  }
 }
 
+/* For Tablets (switches to hamburger) */
 @media (max-width: 1024px) {
   .nav {
-    /* Hide desktop layout; use full-screen panel instead */
     display: none;
     position: fixed;
     inset: 0;
@@ -170,31 +176,26 @@
     justify-content: center;
     align-items: center;
   }
-  .open {
+  .nav.open {
     display: flex;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-
   .navLinks {
     flex-direction: column;
     gap: 2rem;
-    text-align: center;
   }
-
-  .navLink,
-  .ctaButton {
+  .navLink, .ctaButton {
     font-size: 1.35rem;
     color: #1a202c;
   }
-
   .menuIcon {
-    display: block; /* show hamburger on mobile */
+    display: block;
   }
 }
 
-/* Small phones */
+/* For Small Phones */
 @media (max-width: 480px) {
   .container { padding: 0 1.25rem; }
   .navLink, .ctaButton { font-size: 1.15rem; }
