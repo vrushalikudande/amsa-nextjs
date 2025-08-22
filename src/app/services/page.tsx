@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react"; // ✨ Import ReactNode
 import Image from 'next/image';
 import {
   FaLaptopCode, FaMobileAlt, FaUsers, FaCogs, FaShoppingCart, FaDatabase,
@@ -10,13 +10,21 @@ import {
 } from "react-icons/fa";
 import styles from "./services.module.css";
 
-// Updated service data
-const services = [
+// ✨ FIX 1: Define a proper type for a service object
+type Service = {
+    title: string;
+    description: string;
+    icon: ReactNode;
+    image: string;
+    features: string[];
+};
+
+const services: Service[] = [
   { 
     title: "Website Development", 
     description: "We build modern, responsive, and high-performing websites using cutting-edge technologies like React and WordPress, designed to engage your audience and convert visitors into customers.", 
     icon: <FaLaptopCode />,
-    image: "/img/mission.jpg",
+    image: "/img/mission.jpg", // Suggestion: Use unique images
     features: ["Custom UI/UX Design", "Responsive on all devices", "CMS Integration", "SEO Optimized Foundation"]
   },
   { 
@@ -65,8 +73,15 @@ const technologiesData = {
   database: ["MySQL", "PostgreSQL", "MongoDB", "Firebase"],
 };
 
-// Accordion Item Component
-const ServiceAccordionItem = ({ service, isOpen, onClick }: any) => {
+// ✨ FIX 2: Define a proper type for the accordion item's props
+type ServiceAccordionItemProps = {
+    service: Service;
+    isOpen: boolean;
+    onClick: () => void;
+};
+
+// ✨ Apply the new prop type here
+const ServiceAccordionItem = ({ service, isOpen, onClick }: ServiceAccordionItemProps) => {
   return (
     <div className={styles.accordionItem}>
       <button className={styles.accordionHeader} onClick={onClick}>
@@ -102,8 +117,6 @@ export default function ServicesClientPage() {
 
   return (
     <div className={styles.servicesPageWrapper}>
-      
-      {/* ✨ Video Background Container Added Back */}
       <div className={styles.backgroundVideoContainer}>
         <video autoPlay muted loop playsInline className={styles.backgroundVideo}>
           <source src="/video/bg3_Video.mp4" type="video/mp4" />

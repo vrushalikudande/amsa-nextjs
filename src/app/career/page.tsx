@@ -2,13 +2,11 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react'; // ReactNode might be needed for icons in other arrays
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaLightbulb, FaUsers, FaChartLine, FaLaptopCode, FaArrowRight } from "react-icons/fa";
 import styles from "./career.module.css";
-
-// We remove the metadata export from this file
 
 const whyJoinUsData = [
   { icon: <FaLightbulb />, title: "Innovate & Create", description: "Work on cutting-edge technologies and projects that make a real-world impact." },
@@ -23,10 +21,16 @@ const teamData = [
     { name: "Anjali Mehta", role: "Marketing Head", image: "/img/model1.jpg", quote: "The collaborative spirit is amazing. We celebrate every win together." },
 ];
 
-const openPositions: any[] = [];
+// ✨ FIX: Define a proper type for a job position to avoid 'any' type error
+type JobPosition = {
+    title: string;
+    location: string;
+    type: string;
+};
+
+const openPositions: JobPosition[] = [];
 const animatedWords = ["Innovators", "Creators", "Builders", "Dreamers"];
 
-// ✨ Rename the function
 export default function CareerClientPage() {
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState('');
@@ -54,7 +58,6 @@ export default function CareerClientPage() {
     return () => clearTimeout(timeout);
   }, [text, isDeleting, wordIndex]);
 
-  // The rest of your component's JSX remains the same
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.videoBackground}>
@@ -65,7 +68,6 @@ export default function CareerClientPage() {
       </div>
       
       <main className={styles.mainContent}>
-        {/* SECTION 1: HERO */}
         <section className={styles.heroSection}>
           <div className={styles.container}>
             <h1 className={styles.heroTitle}>
@@ -80,7 +82,6 @@ export default function CareerClientPage() {
           </div>
         </section>
 
-        {/* SECTION 2: WHY JOIN US (STAGGERED GRID) */}
         <section className={styles.whyJoinUsSection}>
           <div className={styles.container}>
             <div className={styles.featuresGrid}>
@@ -95,7 +96,6 @@ export default function CareerClientPage() {
           </div>
         </section>
         
-        {/* SECTION 3: MEET THE TEAM */}
         <section className={styles.teamSection}>
             <div className={styles.container}>
                 <h2 className={styles.sectionTitle}>The People Behind the Progress</h2>
@@ -114,7 +114,6 @@ export default function CareerClientPage() {
             </div>
         </section>
 
-        {/* SECTION 4: OPEN POSITIONS */}
         <section id="open-positions" className={styles.positionsSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>Current Openings</h2>
