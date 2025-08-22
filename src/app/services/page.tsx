@@ -1,23 +1,59 @@
-// app/services/ServicesClientPage.tsx  <-- THIS IS THE NEW FILE
+// app/services/ServicesClientPage.tsx
 
 "use client";
 
 import { useState } from "react";
-// We don't need Metadata here
+import Image from 'next/image';
 import {
   FaLaptopCode, FaMobileAlt, FaUsers, FaCogs, FaShoppingCart, FaDatabase,
-  FaComments, FaPencilRuler, FaRocket
+  FaComments, FaPencilRuler, FaRocket, FaChevronDown
 } from "react-icons/fa";
 import styles from "./services.module.css";
 
-// Data for sections
+// Updated service data
 const services = [
-  { title: "Website Development", description: "Modern, responsive websites using HTML5, CSS, JavaScript, React, and WordPress — designed to engage and convert.", icon: <FaLaptopCode /> },
-  { title: "Mobile App Development", description: "Custom Android, iOS, and cross-platform (Flutter, React Native) mobile apps that solve real-world problems.", icon: <FaMobileAlt /> },
-  { title: "SEO & Digital Marketing", description: "On-page, off-page, and technical SEO strategies that boost your search rankings and generate leads.", icon: <FaUsers /> },
-  { title: "Full-Stack Development", description: "Complete solutions including frontend, backend (Node.js, PHP, Python), databases (MySQL, MongoDB), and APIs", icon: <FaCogs /> },
-  { title: "E-Commerce Development", description: "Online store setup with custom checkout, cart, product pages, and secure payments.", icon: <FaShoppingCart /> },
-  { title: "UI/UX Design", description: "Wireframes, prototypes, and clean design that enhances user experience and accessibility.", icon: <FaDatabase /> },
+  { 
+    title: "Website Development", 
+    description: "We build modern, responsive, and high-performing websites using cutting-edge technologies like React and WordPress, designed to engage your audience and convert visitors into customers.", 
+    icon: <FaLaptopCode />,
+    image: "/img/mission.jpg",
+    features: ["Custom UI/UX Design", "Responsive on all devices", "CMS Integration", "SEO Optimized Foundation"]
+  },
+  { 
+    title: "Mobile App Development", 
+    description: "From iOS to Android, we develop custom cross-platform mobile applications using Flutter and React Native that solve real-world problems and offer a seamless user experience.", 
+    icon: <FaMobileAlt />,
+    image: "/img/mission.jpg",
+    features: ["iOS & Android Compatible", "High Performance", "Secure & Scalable", "Post-launch Support"]
+  },
+  { 
+    title: "SEO & Digital Marketing", 
+    description: "Our data-driven SEO and digital marketing strategies are designed to boost your search rankings, increase organic traffic, and generate qualified leads for your business.", 
+    icon: <FaUsers />,
+    image: "/img/mission.jpg",
+    features: ["Keyword Research & Strategy", "On-Page & Off-Page SEO", "Content Marketing", "Performance Analytics"]
+  },
+  { 
+    title: "Full-Stack Development", 
+    description: "We provide end-to-end development solutions, covering everything from frontend interfaces to backend logic (Node.js, Python) and database management (MySQL, MongoDB).", 
+    icon: <FaCogs />,
+    image: "/img/mission.jpg",
+    features: ["Frontend & Backend Expertise", "API Development", "Database Architecture", "Cloud Deployment"]
+  },
+  { 
+    title: "E-Commerce Development", 
+    description: "Launch your online store with our custom e-commerce solutions, featuring secure payment gateways, intuitive product pages, and a streamlined checkout process.", 
+    icon: <FaShoppingCart />,
+    image: "/img/mission.jpg",
+    features: ["Custom Storefront Design", "Payment Gateway Integration", "Inventory Management", "Secure Checkout"]
+  },
+  { 
+    title: "UI/UX Design", 
+    description: "Our design process focuses on creating intuitive, accessible, and visually stunning interfaces through wireframes, prototypes, and user-centric design principles.", 
+    icon: <FaDatabase />,
+    image: "/img/mission.jpg",
+    features: ["User Research & Analysis", "Wireframing & Prototyping", "Interactive Design", "Usability Testing"]
+  },
 ];
 
 const technologiesData = {
@@ -29,13 +65,45 @@ const technologiesData = {
   database: ["MySQL", "PostgreSQL", "MongoDB", "Firebase"],
 };
 
-// Rename the function to match the new file name
+// Accordion Item Component
+const ServiceAccordionItem = ({ service, isOpen, onClick }: any) => {
+  return (
+    <div className={styles.accordionItem}>
+      <button className={styles.accordionHeader} onClick={onClick}>
+        <div className={styles.headerContent}>
+          <span className={styles.headerIcon}>{service.icon}</span>
+          <h3 className={styles.headerTitle}>{service.title}</h3>
+        </div>
+        <FaChevronDown className={`${styles.chevronIcon} ${isOpen ? styles.open : ''}`} />
+      </button>
+      <div className={`${styles.accordionContent} ${isOpen ? styles.open : ''}`}>
+        <div className={styles.contentInner}>
+          <div className={styles.contentDetails}>
+            <p className={styles.contentDescription}>{service.description}</p>
+            <h4 className={styles.featuresTitle}>Key Features</h4>
+            <ul className={styles.featuresList}>
+              {service.features.map((feature: string) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.contentImage}>
+            <Image src={service.image} alt={service.title} width={400} height={300} style={{ objectFit: 'cover', borderRadius: '8px' }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function ServicesClientPage() { 
   const [activeTab, setActiveTab] = useState('frontend');
+  const [openAccordion, setOpenAccordion] = useState(0);
 
   return (
     <div className={styles.servicesPageWrapper}>
-      {/* Fixed background video */}
+      
+      {/* ✨ Video Background Container Added Back */}
       <div className={styles.backgroundVideoContainer}>
         <video autoPlay muted loop playsInline className={styles.backgroundVideo}>
           <source src="/video/bg3_Video.mp4" type="video/mp4" />
@@ -43,28 +111,26 @@ export default function ServicesClientPage() {
         <div className={styles.videoOverlay}></div>
       </div>
 
-      {/* Main scrolling content */}
       <main className={styles.mainContent}>
         <section className={styles.heroSection}>
-          <h1>Our Expert Services</h1>
-          <p>Crafting Future-Ready Digital Solutions to Propel Your Business Forward</p>
-          <a href="#services-grid" className={styles.ctaButton}>Explore Services</a>
+          <p className={styles.heroSubtitle}>Our Expertise</p>
+          <h1 className={styles.heroTitle}>Digital Solutions, <br />Engineered for Growth.</h1>
+          <p className={styles.heroDescription}>We combine strategy, design, and technology to build future-ready digital products that drive business forward.</p>
         </section>
 
-        {/* Services Grid Section */}
-        <section id="services-grid" className={styles.section}>
-          <div className={styles.servicesGrid}>
+        <section id="services-list" className={styles.section}>
+          <div className={styles.accordionContainer}>
             {services.map((service, index) => (
-              <div className={styles.serviceCard} key={index}>
-                <div className={styles.cardIcon}>{service.icon}</div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </div>
+              <ServiceAccordionItem 
+                key={index}
+                service={service}
+                isOpen={openAccordion === index}
+                onClick={() => setOpenAccordion(openAccordion === index ? -1 : index)}
+              />
             ))}
           </div>
         </section>
 
-        {/* Our Approach Section */}
         <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Our Approach</h2>
             <div className={styles.approachGrid}>
@@ -86,7 +152,6 @@ export default function ServicesClientPage() {
             </div>
         </section>
 
-        {/* Technologies Section with Tabs */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Technologies We Use</h2>
           <div className={styles.techTabsContainer}>

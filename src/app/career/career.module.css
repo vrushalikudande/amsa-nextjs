@@ -1,205 +1,284 @@
-/* Main wrapper for the entire page */
-.careerPageWrapper {
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
+/* career.module.css */
+
+.pageWrapper {
+  color: #eaecf0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a101f;
 }
 
-/* Fixed Background Video and Overlay */
-.careerBackground {
+.videoBackground {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: -1;
-  filter: hue-rotate(180deg);
+  z-index: 0;
 }
-
-.careerVideo {
+.videoBackground video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.careerOverlay {
+.videoOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(10, 16, 31, 0.85);
 }
 
-/* Scrollable Content Area */
-.careerContent {
+.mainContent {
   position: relative;
   z-index: 1;
+}
+
+.container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 150px 20px 100px 20px; /* Top padding pushes content below navbar */
+  padding: 0 2rem;
 }
 
-/* Header Section */
-.careerHeader {
+.sectionTitle {
   text-align: center;
-  margin-bottom: 80px;
-}
-
-.careerHeader h1 {
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 3rem;
+  color: #fff;
 }
 
-.introText {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 750px;
-  margin: 0 auto;
-  color: #e0e0e0;
-}
-
-/* General Section Styling */
-.section {
-  margin-bottom: 80px;
-}
-
-.sectionHeading {
+/* --- Section 1: Hero --- */
+.heroSection {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  font-weight: 600;
-  color: #a992ff; /* Accent color from services page */
+  padding: 120px 0;
 }
 
-/* Why Join Us Grid */
-.whyJoinUsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  min-height: 180px; /* Fixed height for animation stability */
 }
 
-/* Glassmorphism Feature Box */
-.featureBox {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 30px;
-  text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.featureBox:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.featureBox h3 {
-  margin: 15px 0 10px 0;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.featureBox p {
-  font-size: 0.95rem;
-  color: #ccc;
-  line-height: 1.5;
-}
-
-.icon {
-  font-size: 2.5rem;
+.animatedWord {
   color: #a992ff;
 }
 
-/* No Openings Section */
-.noOpenings {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-  padding: 40px;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.noOpenings p {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.noOpenings a {
+.caret {
   color: #a992ff;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.heroDescription {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  color: #d0d5dd;
+  line-height: 1.8;
+}
+
+.ctaButton {
+  display: inline-block;
+  background: #a992ff;
+  color: #0a101f;
+  padding: 14px 32px;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.noOpenings a:hover {
-  color: #c3b6ff;
-  text-decoration: underline;
+.ctaButton:hover {
+  background: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(169, 146, 255, 0.2);
 }
 
-/* =================================== */
-/* ===== Responsive Adjustments ====== */
-/* =================================== */
-
-/* For Tablets and smaller desktops */
-@media (max-width: 992px) {
-    .careerContent {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
+/* --- Section 2: Why Join Us (Staggered Grid) --- */
+.whyJoinUsSection {
+  padding: 100px 0;
+  background-color: #0a101f;
 }
 
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
 
-/* For Tablets & Large Phones */
+.featureCard {
+  background: #0c1427;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUpFadeIn 0.6s ease-out forwards;
+}
+
+.featureCard:nth-child(2) { animation-delay: 0.1s; }
+.featureCard:nth-child(3) { animation-delay: 0.2s; }
+.featureCard:nth-child(4) { animation-delay: 0.3s; }
+
+.featureCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: #a992ff;
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  color: #a992ff;
+  margin-bottom: 1.5rem;
+}
+
+.featureTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.featureDescription {
+  font-size: 0.95rem;
+  color: #d0d5dd;
+  line-height: 1.7;
+}
+
+/* --- Section 3: Meet The Team --- */
+.teamSection {
+  padding: 100px 0;
+}
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.teamCard {
+  background: #0c1427;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+.teamImage {
+  border-radius: 50%;
+  border: 3px solid #a992ff;
+  margin-bottom: 1.5rem;
+  /* ✨ Added these for better image handling */
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+}
+.teamQuote {
+  font-style: italic;
+  color: #d0d5dd;
+  margin-bottom: 1.5rem;
+}
+.teamMemberName {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #fff;
+}
+.teamMemberRole {
+  color: #98a2b3;
+}
+
+/* --- Section 4: Open Positions --- */
+.positionsSection {
+  padding: 100px 0;
+  background-color: #0a101f;
+}
+.positionsContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #0c1427;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+}
+.jobRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* ✨ Added for wrapping on small screens */
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.jobRow:last-child {
+  border-bottom: none;
+}
+.jobTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.jobDetails { color: #98a2b3; }
+.applyLink {
+  display: flex; align-items: center; gap: 0.5rem; color: #a992ff;
+  text-decoration: none; font-weight: 600; transition: all 0.3s ease;
+  /* ✨ Added to prevent shrinking */
+  flex-shrink: 0;
+}
+.applyLink:hover { color: #fff; }
+.noOpenings { text-align: center; padding: 2rem; }
+.noOpenings h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+.noOpenings p { color: #d0d5dd; }
+.noOpenings a { color: #a992ff; text-decoration: none; }
+.noOpenings a:hover { text-decoration: underline; }
+
+/* --- Responsive & Animations --- */
+@keyframes slideUpFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✨ Consolidated and improved responsive styles */
 @media (max-width: 768px) {
-  .careerContent {
-    padding-top: 120px;
-    padding-bottom: 80px;
+  .container {
+    padding: 0 1.5rem;
   }
-  .careerHeader h1 {
-    font-size: 2.8rem;
+  .sectionTitle { 
+    font-size: 2.2rem; 
   }
-  .sectionHeading {
-    font-size: 2.1rem;
+  .heroSection {
+    min-height: 80vh;
   }
-  .introText {
-    font-size: 1rem;
+  .heroTitle { 
+    min-height: 150px; /* Adjust height for mobile */
   }
-  .noOpenings {
-    padding: 30px;
+  .teamGrid {
+    /* ✨ Use auto-fit for better responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
-  .whyJoinUsGrid {
-    gap: 20px;
+  .positionsContainer {
+    padding: 1.5rem;
   }
-}
-
-/* For smaller mobile phones */
-@media (max-width: 480px) {
-    .careerContent {
-        padding-top: 100px;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    .careerHeader {
-        margin-bottom: 60px;
-    }
-    .careerHeader h1 {
-        font-size: 2.2rem;
-    }
-    .sectionHeading {
-        font-size: 1.8rem;
-    }
-    .featureBox {
-        padding: 25px;
-    }
-    .featureBox h3 {
-        font-size: 1.2rem;
-    }
-    .noOpenings p {
-        font-size: 1rem;
-    }
+  .jobRow {
+    /* ✨ Make it a column on mobile for better readability */
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .applyLink {
+    margin-top: 1rem;
+    background: rgba(169, 146, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+  }
 }

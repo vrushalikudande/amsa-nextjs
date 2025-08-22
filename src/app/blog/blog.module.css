@@ -1,183 +1,168 @@
-/* --- Background Video --- */
+.blogPageWrapper {
+    font-family: var(--font-poppins), sans-serif;
+    color: #ffffff;
+}
 .blogVideoContainer {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; z-index: -1;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
 }
 .blogVideo {
-  width: 100%; height: 100%; object-fit: cover; filter: hue-rotate(180deg);
+    width: 100%; height: 100%; object-fit: cover;
 }
 .blogOverlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-  background: linear-gradient(to bottom, rgba(10, 18, 30, 0.7), rgba(10, 18, 30, 0.9));
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 18, 30, 0.8), rgba(10, 18, 30, 0.95));
 }
-
-/* --- Main Content & Header --- */
 .blogContent {
-  position: relative; z-index: 1; color: #ffffff; padding: 120px 0 60px;
-  /* ✨ Base font (Inter) poore blog page ke liye set kiya hai */
-  font-family: var(--font-inter), sans-serif;
+    position: relative; z-index: 1; max-width: 1100px;
+    margin: 0 auto; padding: 120px 20px 80px;
 }
 .blogHeader {
-  text-align: center; margin-bottom: 60px; padding: 0 1rem;
+    text-align: center; margin-bottom: 40px;
 }
 .blogTitle {
-  font-size: 3.5rem; font-weight: 700; color: #ffffff;
-  margin-bottom: 1rem;
-  /* ✨ Heading font (Poppins) yahan apply kiya hai */
-  font-family: var(--font-poppins), sans-serif;
+    font-size: 3rem; font-weight: 700; margin-bottom: 1rem;
 }
 .blogSubtitle {
-  font-size: 1.2rem; color: #b0c4de; max-width: 700px; margin: 0 auto;
+    font-size: 1.1rem; color: #ccc; max-width: 700px; margin: 0 auto;
 }
 
-/* --- Featured Post Section --- */
+.filterBar {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 15px; margin-bottom: 60px;
+}
+.filterButton {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: var(--font-poppins), sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.filterButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #a992ff;
+}
+.activeFilter {
+    background: #a992ff;
+    color: #1a1f2e;
+    border-color: #a992ff;
+    box-shadow: 0 0 15px rgba(169, 146, 255, 0.4);
+}
+
 .featuredSection {
-  max-width: 1100px; margin: 0 auto 60px; padding: 0 1rem;
+    margin-bottom: 60px;
 }
 .featuredCard {
-  display: block; position: relative; border-radius: 12px; overflow: hidden;
-  min-height: 450px; color: #ffffff; text-decoration: none;
-  display: flex; align-items: flex-end;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: border-color 0.3s ease;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    text-decoration: none; color: inherit;
+    background: rgba(36, 41, 56, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
 }
-.featuredImage {
-  transition: transform 0.4s ease;
+.featuredCard:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
-.featuredCard:hover .featuredImage {
-  transform: scale(1.03);
+.featuredImageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+    overflow: hidden;
 }
-.featuredContent {
-  position: relative; z-index: 2; padding: 40px; width: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+.featuredTextContent {
+    padding: 10px;
 }
 .featuredTitle {
-  font-size: 2.2rem; margin-bottom: 1rem; line-height: 1.3;
-  /* ✨ Heading font (Poppins) yahan apply kiya hai */
-  font-family: var(--font-poppins), sans-serif;
+    font-size: 2rem; font-weight: 600; line-height: 1.3;
+    margin-bottom: 1rem;
 }
 
-/* --- Post Grid --- */
 .postsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  max-width: 1100px; margin: 0 auto; padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
-/* --- Redesigned Blog Card --- */
 .blogCard {
-  display: flex; flex-direction: column; text-decoration: none; color: #ffffff;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  transition: all 0.3s ease-out;
-}
-.cardImageContainer {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-.cardImageContainer img {
-  transition: transform 0.4s ease-out;
-}
-.cardContent {
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-.cardTitle {
-  font-size: 1.3rem; font-weight: 600; line-height: 1.4;
-  margin-bottom: 0.75rem;
-  /* ✨ Heading font (Poppins) yahan apply kiya hai */
-  font-family: var(--font-poppins), sans-serif;
-}
-.cardDescription {
-  font-size: 0.9rem;
-  color: #b0c4de;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: auto;
-}
-.cardTags {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem;
-}
-.cardTags span {
-  font-size: 0.75rem; font-weight: 500;
-  color: #94a3b8;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-.cardMeta {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 0.8rem; color: #94a3b8;
+    text-decoration: none; color: inherit;
+    background: rgba(36, 41, 56, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 .blogCard:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
-.blogCard:hover .cardImageContainer img {
-  transform: scale(1.03);
+
+.cardImageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+.cardImage {
+    transition: transform 0.4s ease-out;
+}
+.featuredCard:hover .cardImage,
+.blogCard:hover .cardImage {
+    transform: scale(1.05);
+}
+
+.cardContent {
+    padding: 25px;
+}
+.cardTitle {
+    font-size: 1.3rem; font-weight: 600; line-height: 1.4;
+    margin-bottom: 1rem;
+}
+.cardDescription {
+    color: #ccc; margin-bottom: 1rem;
+}
+.cardTags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem;
+}
+.cardTags span {
+    font-size: 0.8rem; font-weight: 500;
+    color: #d1c4e9;
+    background: rgba(169, 146, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+.cardMeta {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.85rem; color: #94a3b8;
 }
 .readMoreLink {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #00A3FF;
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s ease-out;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #a992ff;
+    transition: transform 0.3s ease;
 }
-.blogCard:hover .readMoreLink,
-.blogCard:focus-within .readMoreLink {
-  opacity: 1;
-  transform: translateX(0);
+.featuredCard:hover .readMoreLink {
+    transform: translateX(5px);
 }
 
-/* --- Responsive --- */
-@media (max-width: 1024px) {
-  .featuredCard {
-    min-height: 400px;
-  }
+@media (max-width: 900px) {
+    .featuredCard {
+        grid-template-columns: 1fr;
+    }
 }
+
 @media (max-width: 768px) {
-  .blogContent { padding-top: 100px; }
-  .blogTitle { font-size: 2.5rem; }
-  .blogSubtitle { font-size: 1rem; }
-  .featuredCard { min-height: 350px; }
-  .featuredTitle { font-size: 1.8rem; }
-  .postsGrid { grid-template-columns: 1fr; }
-}
-
-
-/* ✨ ADD THIS CSS FOR THE NEW BUTTON */
-
-.exploreButton {
-  margin-top: 30px; /* Thoda space dene ke liye */
-  padding: 14px 32px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  /* Aapke services page jaisa color use kiya hai */
-  background-color: #a992ff; 
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(169, 146, 255, 0.3);
-  font-family: var(--font-poppins), sans-serif;
-}
-
-.exploreButton:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(169, 146, 255, 0.5);
+    .blogTitle { font-size: 2.5rem; }
 }

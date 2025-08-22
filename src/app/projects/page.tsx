@@ -1,42 +1,66 @@
-import type { Metadata } from "next";
-import Image from "next/image"; // Using Next.js Image component for potential future images
-import { FaMobileAlt, FaLaptopCode, FaSearch } from "react-icons/fa";
+// app/projects/page.tsx
+
+"use client";
+
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./projects.module.css";
 
-export const metadata: Metadata = {
-  title: "Our Work | AMSA OVERSEAS",
-  description: "Explore our portfolio of successful projects and case studies.",
-};
-
-// Data for the projects
 const projectsData = [
   {
-    icon: <FaMobileAlt />,
-    title: "EduApp (Mobile App)",
-    description: "A cross-platform Learning Management System (LMS) designed for coaching institutes to streamline courses and student engagement.",
-    tags: ["Flutter", "Firebase", "Dart"],
-    image: "/images/project-eduapp.jpg" // Placeholder image path
+    id: 1,
+    title: "EduApp - LMS Mobile App",
+    description: "A comprehensive cross-platform Learning Management System for coaching institutes, featuring interactive modules, real-time analytics, and secure parent-teacher communication.",
+    tags: ["Flutter", "Firebase", "Dart", "Mobile"],
+    image:  "/img/mission.jpg"
   },
   {
-    icon: <FaLaptopCode />,
-    title: "BuildMySite (Web App)",
-    description: "An intuitive business website builder featuring a drag-and-drop interface, enabling users to create stunning websites without code.",
-    tags: ["React", "Node.js", "MongoDB"],
-    image: "/images/project-buildmysite.jpg" // Placeholder image path
+    id: 2,
+    title: "BuildMySite - No-Code Builder",
+    description: "An intuitive drag-and-drop website builder designed to empower small businesses. This no-code solution allows users to create stunning, responsive websites in minutes.",
+    tags: ["React", "Node.js", "MongoDB", "Web App"],
+    image: "/img/mission.jpg"
   },
   {
-    icon: <FaSearch />,
-    title: "SEO For PharmaCo",
-    description: "Executed a complete SEO and blog strategy that successfully boosted the client's organic traffic by over 300% in just 3 months.",
+    id: 3,
+    title: "LuxeStyle - E-commerce Platform",
+    description: "Developed a bespoke Shopify Plus theme and integrated custom apps for a luxury fashion brand, resulting in a 40% increase in conversion rates and a seamless user experience.",
+    tags: ["Shopify", "Liquid", "React", "E-commerce"],
+    image:  "/img/mission.jpg"
+  },
+  {
+    id: 4,
+    title: "Fintech Enterprise ERP System",
+    description: "Built a secure, scalable Enterprise Resource Planning (ERP) system for a financial services client, automating complex invoicing, reporting, and compliance workflows.",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "AWS"],
+    image:  "/img/mission.jpg"
+  },
+  {
+    id: 5,
+    title: "HealthConnect App UI/UX",
+    description: "Led the complete UI/UX design process for a health and wellness app, focusing on user-centric design to create an intuitive and calming user experience from scratch.",
+    tags: ["Figma", "User Research", "Prototyping", "UI/UX"],
+    image:  "/img/mission.jpg"
+  },
+  {
+    id: 6,
+    title: "SEO Strategy for PharmaCo",
+    description: "Executed a comprehensive keyword strategy, technical SEO audit, and high-quality content creation that boosted the client's organic traffic by over 300% in 3 months.",
     tags: ["SEO", "Content Strategy", "Analytics"],
-    image: "/images/project-seo.jpg" // Placeholder image path
+    image:  "/img/mission.jpg"
   }
 ];
 
 export default function ProjectsPage() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
     <div className={styles.projectsPageWrapper}>
-      {/* Background Video and Overlay */}
       <div className={styles.projectsBackground}>
         <video autoPlay muted loop playsInline className={styles.projectsVideo}>
           <source src="/video/bg3_Video.mp4" type="video/mp4" />
@@ -44,7 +68,6 @@ export default function ProjectsPage() {
         <div className={styles.projectsOverlay}></div>
       </div>
 
-      {/* Scrollable Content */}
       <main className={styles.projectsContent}>
         <header className={styles.projectsHeader}>
           <h1>Our Work</h1>
@@ -53,21 +76,50 @@ export default function ProjectsPage() {
           </p>
         </header>
 
-        {/* Projects Grid */}
         <section className={styles.projectsGrid}>
           {projectsData.map((project, index) => (
-            <div className={styles.projectCard} key={index}>
-              <div className={styles.cardIcon}>{project.icon}</div>
-              <h3 className={styles.cardTitle}>{project.title}</h3>
-              <p className={styles.cardDescription}>{project.description}</p>
-              <div className={styles.cardTags}>
-                {project.tags.map((tag, tagIndex) => (
-                  <span key={tagIndex}>{tag}</span>
-                ))}
+            <Link 
+              href={`/projects/${project.id}`} 
+              key={project.id} 
+              className={styles.projectCard}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className={styles.cardImage}
+                style={{ objectFit: 'cover' }}
+              />
+              <div className={styles.cardOverlay}></div>
+              
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitle}>{project.title}</h3>
+                <div className={styles.cardHoverContent}>
+                  <p className={styles.cardDescription}>{project.description}</p>
+                  <div className={styles.cardTags}>
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </section>
+
+        {/* ✨ NEW: Call to Action Section */}
+        <section className={styles.ctaSection} data-aos="fade-up" data-aos-delay="300">
+            <h2 className={styles.ctaTitle}>Have a Project in Mind?</h2>
+            <p className={styles.ctaDescription}>
+                Let's build something great together. We're excited to hear your ideas and discuss how we can bring your vision to life.
+            </p>
+            <Link href="/contact" className={styles.ctaButton}>
+                Get a Free Consultation
+            </Link>
+        </section>
+        
       </main>
     </div>
   );

@@ -1,164 +1,179 @@
-/* Main wrapper */
 .contactPageWrapper {
-  color: white;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
 }
-
-/* Background */
 .contactBackground {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
 }
 .contactVideo {
-  width: 100%; height: 100%; object-fit: cover;
+    width: 100%; height: 100%; object-fit: cover;
 }
 .contactOverlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to bottom, rgba(10, 18, 30, 0.7), rgba(10, 18, 30, 0.9));
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 18, 30, 0.8), rgba(10, 18, 30, 0.95));
 }
-
-/* Content Area */
 .contactContent {
-  position: relative; z-index: 1; max-width: 1100px;
-  margin: 0 auto; padding: 120px 20px 80px;
+    position: relative; z-index: 1; max-width: 1100px;
+    margin: 0 auto; padding: 120px 20px 80px;
 }
-
-/* Header */
 .contactHeader {
-  text-align: center; margin-bottom: 60px;
+    text-align: center; margin-bottom: 60px;
 }
 .contactHeader h1 {
-  font-size: 3rem; font-weight: 700; margin-bottom: 15px;
+    font-size: 3rem; font-weight: 700; margin-bottom: 15px;
 }
 .contactHeader p {
-  font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #ccc;
+    font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #ccc;
+}
+.contactContainer {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Info side is smaller */
+    background: rgba(36, 41, 56, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* ✨ Main Contact Card (Glassmorphism) */
-.contactCard {
-  display: grid;
-  grid-template-columns: 40% 60%; /* Left column thoda chhota */
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-/* ✨ Left Side: Contact Info */
 .contactInfo {
-  padding: 40px;
-  background: rgba(169, 146, 255, 0.1); /* Accent color background */
-  display: flex; flex-direction: column;
+    padding: 40px;
+    background: rgba(169, 146, 255, 0.1);
+    display: flex; flex-direction: column;
 }
-.contactInfo h3 {
-  font-size: 1.6rem; font-weight: 600; margin-bottom: 15px; color: #fff;
+.contactInfo h2 {
+    font-size: 1.8rem; font-weight: 600; margin-bottom: 15px;
 }
 .contactInfo p {
-  font-size: 0.95rem; color: #ccc; line-height: 1.6; margin-bottom: 30px;
+    font-size: 0.95rem; color: #ccc; line-height: 1.6; margin-bottom: 30px;
 }
 .infoList {
-  list-style: none; padding: 0; margin: 0;
+    list-style: none; padding: 0; margin: 0;
 }
 .infoList li {
-  display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px;
-  font-size: 1rem;
+    display: flex; align-items: flex-start; gap: 15px;
+    margin-bottom: 25px; font-size: 1rem;
 }
 .infoList li svg {
-  color: #a992ff; font-size: 1.2rem; margin-top: 3px; flex-shrink: 0;
+    color: #a992ff; font-size: 1.2rem; margin-top: 3px; flex-shrink: 0;
 }
 .infoList a {
-  color: #fff; text-decoration: none; transition: color 0.3s ease;
+    color: #fff; text-decoration: none; transition: color 0.3s ease;
 }
 .infoList a:hover {
-  color: #a992ff;
+    color: #a992ff;
 }
 .socialIcons {
-  margin-top: auto; /* Push to the bottom */
-  padding-top: 20px;
-  display: flex; gap: 15px;
+    margin-top: auto; padding-top: 20px;
+    display: flex; gap: 15px;
 }
 .socialIcons a {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border-radius: 50%;
-  color: #fff; background: rgba(255, 255, 255, 0.1);
-  font-size: 1rem; transition: all 0.3s ease;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    color: #fff; background: rgba(255, 255, 255, 0.1);
+    font-size: 1rem; transition: all 0.3s ease;
 }
 .socialIcons a:hover {
-  background: #a992ff; transform: translateY(-3px);
+    background: #a992ff; transform: translateY(-3px);
 }
 
-/* ✨ Right Side: Contact Form */
 .contactForm {
-  padding: 40px; display: flex; flex-direction: column;
+    padding: 40px;
 }
 .formRow {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 25px;
 }
 .formGroup {
-  display: flex; flex-direction: column; margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.formGroup input,
+.formGroup textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 .formGroup label {
-  margin-bottom: 8px; font-size: 0.9rem; font-weight: 500; color: #ccc;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 1rem;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease;
 }
-.contactForm input,
-.contactForm textarea {
-  width: 100%; padding: 12px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  color: #fff; font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.formGroup input:focus + label,
+.formGroup input:not(:placeholder-shown) + label,
+.formGroup textarea:focus + label,
+.formGroup textarea:not(:placeholder-shown) + label {
+    top: -16px;
+    font-size: 0.8rem;
+    color: #a992ff;
 }
-.contactForm input:focus,
-.contactForm textarea:focus {
-  outline: none; border-color: #a992ff;
-  box-shadow: 0 0 0 3px rgba(169, 146, 255, 0.2);
+.formGroup input:focus,
+.formGroup textarea:focus {
+    border-bottom-color: #a992ff;
 }
+
 .submitButton {
-  margin-top: 10px; padding: 15px;
-  background: #a992ff; color: white;
-  border: none; border-radius: 8px;
-  font-weight: 600; font-size: 1rem;
-  cursor: pointer; transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(169, 146, 255, 0.3);
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #007BFF, #00C6FF);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.25);
 }
 .submitButton:hover:not(:disabled) {
-  background: #9378ff; transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(169, 146, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 123, 255, 0.35);
 }
 .submitButton:disabled {
-  background: #555; cursor: not-allowed; opacity: 0.7;
+    background: #555; cursor: not-allowed; opacity: 0.7; box-shadow: none;
 }
 .errorMessage {
-  color: #ff9a9a; font-size: 0.85rem; padding-top: 6px;
+    color: #ff9a9a; font-size: 0.85rem; padding-top: 6px; display: block;
 }
 
-/* Map Section */
+/* ✨ ADDED: Styles for the map section */
 .mapSection {
-  margin-top: 60px; border-radius: 20px; overflow: hidden;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.mapSection iframe {
-  width:100%; height: 200px; border: none; display: block;
+    margin-top: 60px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* --- Responsive --- */
+.mapIframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    display: block; /* Removes small space below the iframe */
+}
+
 @media (max-width: 900px) {
-  .contactCard {
-    grid-template-columns: 1fr;
-  }
-  .contactInfo {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  }
+    .contactContainer {
+        grid-template-columns: 1fr;
+    }
+    .contactInfo {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 }
 @media (max-width: 768px) {
-  .contactContent { padding: 100px 20px 60px; }
-  .contactHeader h1 { font-size: 2.5rem; }
-  .formRow { grid-template-columns: 1fr; gap: 0; }
-  .formGroup { margin-bottom: 20px; }
-  /* Last form group in a column doesn't need bottom margin */
-  .formRow .formGroup:last-child { margin-bottom: 0; }
+    .contactContent { padding: 100px 20px 60px; }
+    .contactHeader h1 { font-size: 2.5rem; }
+    .formRow { grid-template-columns: 1fr; gap: 0; }
+    .mapIframe {
+        height: 300px;
+    }
 }

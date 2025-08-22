@@ -3,6 +3,8 @@
   color: #fff;
   padding: 60px 20px 20px;
   font-family: 'Inter', sans-serif;
+   position: relative; /* ✨ Yeh zaroori hai */
+  z-index: 10;    
 }
 
 .container {

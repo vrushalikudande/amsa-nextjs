@@ -1,328 +1,256 @@
-/* Main Wrapper and Background */
 .aboutPageWrapper {
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
+    color: white;
+    font-family: 'Poppins', sans-serif;
 }
-
 .backgroundVideo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
 }
-
+.backgroundVideo video {
+    width: 100%; height: 100%; object-fit: cover;
+}
 .videoOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 18, 30, 0.8), rgba(10, 18, 30, 0.95));
 }
-
-/* Main Content Area */
 .aboutContent {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 120px 20px 80px;
+    position: relative; z-index: 1; max-width: 1100px;
+    margin: 0 auto; padding: 120px 20px 80px;
+}
+.aboutContent section {
+    margin-bottom: 100px;
 }
 
-/* Header Section */
 .aboutHeader {
-  text-align: center;
-  margin-bottom: 80px;
+    text-align: center; margin-bottom: 100px;
 }
-
 .aboutHeader h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
-  margin-bottom: 20px;
+    font-size: 3.2rem; font-weight: 700; margin-bottom: 20px;
+    line-height: 1.3;
 }
-
 .aboutHeader p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  max-width: 800px;
-  margin: 0 auto;
-  color: #e0e0e0;
+    font-size: 1.1rem; line-height: 1.7; max-width: 800px;
+    margin: 0 auto; color: #ccc;
 }
-
-/* Common Styles for Icons and Section Headings */
 .icon {
-  font-size: 2.5rem;
-  color: #a992ff;
-  margin-bottom: 15px;
+    font-size: 2rem; color: #a992ff; margin-right: 20px; flex-shrink: 0;
 }
 
-.valuesSection h2,
-.journeySection h2 {
-  text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 15px;
+.missionSection {
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 50px;
+}
+.missionImage img {
+    border-radius: 16px; width: 100%; height: auto;
+}
+.missionContent {
+    display: flex; flex-direction: column; gap: 30px;
+}
+.missionItem {
+    display: flex; align-items: flex-start;
+}
+.missionItem h2 {
+    font-size: 1.8rem; margin-top: 0; margin-bottom: 10px;
+}
+.missionItem p {
+    color: #ccc; line-height: 1.7;
 }
 
-.valuesSection > p,
-.journeySection > p {
-  text-align: center;
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto 60px auto;
-  color: #ccc;
-  line-height: 1.6;
+.statsSection {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px; padding: 40px 20px;
+    backdrop-filter: blur(10px);
+}
+.statItem {
+    text-align: center;
+}
+.statNumber {
+    font-size: 2.8rem; font-weight: 700; color: #a992ff; display: block;
+}
+.statText {
+    font-size: 1rem; color: #ccc;
 }
 
-/* Mission/Vision Grid */
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-bottom: 100px;
+.journeySection h2, .teamSection h2, .valuesSection h2 {
+    text-align: center; font-size: 2.8rem; margin-bottom: 15px;
+}
+.journeySection > p, .teamSection > p, .valuesSection > p {
+    text-align: center; font-size: 1.1rem; max-width: 700px;
+    margin: 0 auto 60px auto; color: #ccc; line-height: 1.6;
 }
 
-.infoCard {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  padding: 35px;
-  transition: transform 0.3s ease, background 0.3s ease;
+/* ✨ Revamped "Our Journey" Timeline Section ✨ */
+.journeySection {
+    margin-bottom: 100px;
 }
 
-.infoCard:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.infoCard h2 {
-  font-size: 1.8rem;
-  margin-top: 0;
-}
-
-.reasonsList {
-  list-style: none;
-  padding: 0;
-}
-
-.reasonsList li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  font-size: 1rem;
-}
-
-/* Values Grid */
-.valuesSection {
-  margin-bottom: 100px;
-}
-
-.valuesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
-
-.valuesCard {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  padding: 30px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.valuesCard:hover {
-  transform: translateY(-10px);
-}
-
-.valuesCard h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-}
-
-/* --- OUR JOURNEY: ALTERNATING LAYOUT --- */
 .journeyFlow {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  position: relative;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .journeyFlow::before {
-  content: '';
-  position: absolute;
-  top: 20px;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  background: linear-gradient(to bottom, transparent, #a992ff, transparent);
-  opacity: 0.3;
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 10px; /* Position bar to the left */
+    width: 3px;
+    height: calc(100% - 3rem);
+    background-color: rgba(169, 146, 255, 0.2);
+    border-radius: 3px;
 }
 
 .journeyItem {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  align-items: center;
-  position: relative;
+    position: relative;
+    padding-left: 60px; /* Space for the timeline bar and dot */
+    margin-bottom: 50px;
 }
 
-.journeyItem:nth-child(even) .journeyIconContainer {
-  order: 2;
-  justify-self: start;
-}
-.journeyItem:nth-child(even) .journeyTextContainer {
-  order: 1;
-  text-align: right;
+.journeyItem:last-child {
+    margin-bottom: 0;
 }
 
-.journeyIconContainer {
-  font-size: 5rem;
-  color: #a992ff;
-  justify-self: end;
-  opacity: 0.7;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+.journeyItem::before {
+    content: '';
+    position: absolute;
+    top: 2.5rem;
+    left: 3px; /* Align with the bar */
+    width: 15px;
+    height: 15px;
+    background-color: #1a1f2e;
+    border: 3px solid #a992ff;
+    border-radius: 50%;
+    z-index: 1;
+    transition: box-shadow 0.3s ease;
 }
 
-.journeyItem:hover .journeyIconContainer {
-  transform: scale(1.1) rotate(-5deg);
-  opacity: 1;
+.journeyItem:hover::before {
+    box-shadow: 0 0 15px rgba(169, 146, 255, 0.6);
 }
 
-.journeyTextContainer {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  padding: 25px;
-  transition: transform 0.3s ease;
-}
-
-.journeyItem:hover .journeyTextContainer {
-  transform: scale(1.02);
+.journeyContent {
+    position: relative;
 }
 
 .journeyYear {
-  display: inline-block;
-  background-color: rgba(169, 146, 255, 0.15);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-  color: #e0e0e0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #a992ff;
+    margin-bottom: 15px;
+    display: inline-block;
+    background: rgba(169, 146, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
 }
 
-.journeyTextContainer h3 {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
+.journeyCard {
+    background: rgba(36, 41, 56, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
 }
 
-.journeyTextContainer p {
-  font-size: 1rem;
-  color: #ccc;
-  line-height: 1.7;
+.journeyItem:hover .journeyCard {
+    transform: translateX(10px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-
-/* --- RESPONSIVE SECTION --- */
-
-/* For Tablets and smaller devices */
-@media (max-width: 992px) {
-  .aboutHeader h1,
-  .valuesSection h2,
-  .journeySection h2 {
-    font-size: 2.5rem;
-  }
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-/* For Mobile devices */
-@media (max-width: 768px) {
-  .aboutContent {
-    padding: 100px 15px 60px;
-  }
+.cardIcon {
+    font-size: 1.8rem;
+    color: #a992ff;
+}
 
-  .aboutHeader {
-    margin-bottom: 60px;
-  }
-
-  .aboutHeader h1 {
-    font-size: 2.2rem;
-  }
-  
-  .aboutHeader p {
-    font-size: 1rem;
-  }
-
-  .valuesSection h2,
-  .journeySection h2 {
-    font-size: 2rem;
-  }
-  
-  .valuesSection > p,
-  .journeySection > p {
-    margin-bottom: 40px;
-  }
-
-  .infoGrid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    margin-bottom: 80px;
-  }
-
-  .valuesGrid {
-    gap: 20px;
-  }
-  
-  .infoCard, .valuesCard, .journeyTextContainer {
-    padding: 25px;
-  }
-
-  .infoCard h2, .journeyTextContainer h3 {
+.cardTitle {
     font-size: 1.5rem;
-  }
+    font-weight: 600;
+    margin: 0;
+}
 
-  .valuesCard h3 {
-    font-size: 1.3rem;
-  }
+.cardDescription {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.7;
+}
 
-  /* Journey Section Mobile Styles */
-  .journeyFlow {
+.teamGrid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
-  }
-  
-  .journeyFlow::before {
-    left: 20px;
-  }
+}
+.teamMember {
+    text-align: center;
+}
+.teamMemberImage {
+    border-radius: 50%; overflow: hidden; width: 180px; height: 180px;
+    margin: 0 auto 20px; border: 3px solid #a992ff;
+    box-shadow: 0 0 20px rgba(169, 146, 255, 0.3);
+}
+.teamMemberImage img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.teamMember h3 {
+    font-size: 1.4rem; margin-bottom: 5px;
+}
+.teamMember span {
+    color: #ccc;
+}
 
-  .journeyItem {
-    grid-template-columns: 40px 1fr;
-    gap: 20px;
-  }
-  
-  .journeyItem:nth-child(even) .journeyIconContainer,
-  .journeyItem:nth-child(even) .journeyTextContainer {
-    order: initial;
-    text-align: left;
-    justify-self: start;
-  }
-  
-  .journeyIconContainer {
-    font-size: 2rem;
-    justify-self: center;
-    grid-row: 1 / 3;
-    align-self: start;
-    margin-top: 5px;
-  }
+.valuesGrid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px;
+}
+.valuesCard {
+    background: rgba(255, 255, 255, 0.05); border-radius: 16px;
+    padding: 30px; text-align: center;
+    border: 1px solid transparent; transition: all 0.3s ease;
+}
+.valuesCard:hover {
+    transform: translateY(-5px); border-color: #a992ff;
+}
+.valuesCard svg {
+    font-size: 2.5rem; color: #a992ff; margin-bottom: 15px;
+}
+.valuesCard h3 {
+    font-size: 1.3rem;
+}
 
-  .journeyTextContainer {
-    text-align: left;
-  }
+@media (max-width: 992px) {
+    .missionSection, .statsSection, .valuesGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .missionSection { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .aboutHeader h1 { font-size: 2.5rem; }
+    .statsSection {
+        grid-template-columns: repeat(2, 1fr); gap: 30px;
+    }
+    .journeyFlow::before {
+        left: 10px;
+    }
+    .journeyItem {
+        padding-left: 50px;
+    }
+    .valuesGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    .statsSection, .valuesGrid {
+        grid-template-columns: 1fr;
+    }
+    .statItem:not(:last-child) {
+        margin-bottom: 30px;
+    }
 }
