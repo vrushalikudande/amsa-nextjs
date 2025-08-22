@@ -8,24 +8,30 @@ import {
 } from "react-icons/fa";
 import styles from "./contact.module.css";
 
+// ✨ It's good practice to create a type for your form data
+type FormData = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    message: string;
+};
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstName: "", lastName: "", email: "", phone: "", message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // ✨ UPDATED: Real-time validation to prevent incorrect character input
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
     if (name === 'firstName' || name === 'lastName') {
-      // Allow only letters and spaces
       if (/^[a-zA-Z\s]*$/.test(value)) {
         setFormData({ ...formData, [name]: value });
       }
     } else if (name === 'phone') {
-      // Allow only numbers and limit to 10 digits
       if (/^[0-9]*$/.test(value) && value.length <= 10) {
         setFormData({ ...formData, [name]: value });
       }
@@ -38,26 +44,28 @@ export default function ContactPage() {
     const newErrors: Record<string, string> = {};
     if (!formData.firstName.trim()) {
         newErrors.firstName = "First name is required.";
-    } else if (!/^[a-zA-Z\s]+$/.test(formData.firstName)) { // ✨ ADDED: Final check for letters only
-        newErrors.firstName = "First name can only contain letters.";
+    } else if (formData.firstName.trim().length < 2) {
+        newErrors.firstName = "First name must be at least 2 characters.";
     }
 
     if (!formData.lastName.trim()) {
         newErrors.lastName = "Last name is required.";
-    } else if (!/^[a-zA-Z\s]+$/.test(formData.lastName)) { // ✨ ADDED: Final check for letters only
-        newErrors.lastName = "Last name can only contain letters.";
+    } else if (formData.lastName.trim().length < 2) {
+        newErrors.lastName = "Last name must be at least 2 characters.";
     }
     
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
     }
     if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
       newErrors.phone = "Phone number must be 10 digits.";
     }
     if (!formData.message.trim()) {
         newErrors.message = "Message is required.";
+    } else if (formData.message.trim().length < 10) {
+        newErrors.message = "Message must be at least 10 characters long.";
     }
     
     setErrors(newErrors);
@@ -147,12 +155,11 @@ export default function ContactPage() {
           </form>
         </div>
 
-        {/* ✨ ADDED: Map section */}
         <section className={styles.mapSection}>
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121008.0677924942!2d73.56602579726561!3d18.596471999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bbb98e08c485%3A0x88605aadb7c213a6!2sGera's%20Imperium%20Rise!5e0!3m2!1sen!2sin!4v1755842230718!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.164843997784!2d73.7337978153438!3d18.58812998738203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bbc0e0000001%3A0x13784bf12a76a8a2!2sGera's%20Imperium%20Rise!5e0!3m2!1sen!2sin!4v1661163749420!5m2!1sen!2sin" 
             className={styles.mapIframe}
-            allowFullScreen="" 
+            allowFullScreen
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
