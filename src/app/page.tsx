@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react"; // ✨ FIX: ReactNode ko import kiya hai icons ki typing ke liye
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { TypeAnimation } from 'react-type-animation';
@@ -13,14 +13,28 @@ import {
 import Link from 'next/link';
 import styles from './page.module.css';
 
+// ✨ FIX: 'offerings' array ke liye interface define kiya hai
+interface Offering {
+  icon: ReactNode;
+  title: string;
+  desc: string;
+}
+
+// ✨ FIX: 'processSteps' array ke liye interface define kiya hai
+interface ProcessStep {
+  icon: ReactNode;
+  title: string;
+  desc: string;
+}
+
 // Data for sections
-const offerings = [
+const offerings: Offering[] = [ // ✨ FIX: Yahan Offering[] type apply kiya hai
   { icon: <FaCogs />, title: "SAP ERP Solutions", desc: "Streamline your business operations with scalable ERP systems." },
   { icon: <FaLaptopCode />, title: "Custom Software", desc: "Build intelligent and efficient applications tailored to your needs." },
   { icon: <FaSyncAlt />, title: "System Integration", desc: "Optimize your IT infrastructure with our expert consulting." },
 ];
 
-const processSteps = [
+const processSteps: ProcessStep[] = [ // ✨ FIX: Yahan ProcessStep[] type apply kiya hai
   { icon: <FaBullseye />, title: " Discovery", desc: "We start by understanding your vision, goals, and requirements." },
   { icon: <FaPencilRuler />, title: "Design & UX", desc: "We craft intuitive and beautiful user interfaces for the best experience." },
   { icon: <FaCode />, title: " Development", desc: "Our expert developers bring the designs to life with clean, efficient code." },
@@ -34,7 +48,6 @@ const reasons = [
   { icon: <FaHandshake />, text: "Agile & Customer-Centric Approach" },
 ];
 
-// Tech logos - replace with your actual logo paths
 const techLogos = [
   { src: "/img/react.svg", alt: "React" },
   { src: "/img/nodejs.svg", alt: "Node.js" },
@@ -48,18 +61,14 @@ const techLogos = [
 
 
 export default function Home() {
-  // ✨ YAHAN CHANGE KIYA HAI
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: true, // Animation happens only once
+      once: true,
     });
-
-    // White space issue fix karne ke liye yeh line add ki hai
     setTimeout(() => {
       AOS.refresh();
     }, 100);
-    
   }, []);
 
   return (
@@ -129,7 +138,6 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>Why Amsa?</h2>
           <div className={styles.whyUsGrid}>
             <div className={styles.whyUsImage} data-aos="fade-right">
-              {/* IMPORTANT: Make sure this image exists in your public/img/ folder */}
               <Image src="/img/mission.jpg" alt="Team collaborating" width={500} height={500} />
             </div>
             <div className={styles.whyUsList} data-aos="fade-left">
@@ -148,8 +156,8 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>Technologies We Master</h2>
           <div className={styles.marquee}>
             <div className={styles.marqueeContent}>
-              {techLogos.concat(techLogos).map((logo, idx) => ( // Duplicate for seamless scroll
-                <div className={styles.techLogo} key={`${logo.alt}-${idx}`}> {/* ✨ Unique key fix */}
+              {techLogos.concat(techLogos).map((logo, idx) => (
+                <div className={styles.techLogo} key={`${logo.alt}-${idx}`}>
                   <Image src={logo.src} alt={logo.alt} width={100} height={40} />
                 </div>
               ))}

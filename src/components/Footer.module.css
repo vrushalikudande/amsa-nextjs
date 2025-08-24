@@ -1,10 +1,12 @@
+/* footer.module.css */
+
 .footer {
   background: #0d0d0d;
   color: #fff;
   padding: 60px 20px 20px;
   font-family: 'Inter', sans-serif;
-   position: relative; /* ✨ Yeh zaroori hai */
-  z-index: 10;    
+  position: relative;
+  z-index: 10;
 }
 
 .container {
@@ -14,129 +16,9 @@
 
 .footerGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.footerColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.footerLogo {
-  display: inline-block;
-  margin-bottom: 12px;
-}
-
-.footerDescription {
-  font-size: 14px;
-  color: #aaa;
-  line-height: 1.6;
-}
-
-.socialIcons {
-  display: flex;
-  gap: 12px;
-}
-
-.socialIcons a {
-  background: #222;
-  color: #fff;
-  padding: 10px;
-  border-radius: 50%;
-  transition: 0.3s ease;
-}
-
-.socialIcons a:hover {
-  background: #e63946;
-  transform: scale(1.1);
-}
-
-.columnTitle {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #fff;
-  position: relative;
-}
-
-.linkList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.linkList li {
-  margin-bottom: 8px;
-}
-
-.linkList li a {
-  color: #aaa;
-  font-size: 14px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.linkList li a:hover {
-  color: #e63946;
-}
-
-.contactList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.contactList li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: #aaa;
-}
-
-.contactList a {
-  color: #aaa;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.contactList a:hover {
-  color: #e63946;
-}
-
-.mapContainer {
-  margin-top: 15px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-}
-
-.footerBottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 15px;
-  text-align: center;
-  font-size: 14px;
-  color: #888;
-}
-.footer {
-  background-color: #0d0d0d;
-  color: #fff;
-  padding: 40px 20px 20px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footerGrid {
-  display: grid;
   grid-template-columns: 1.3fr 0.7fr 0.7fr 1.3fr;
-  gap: 35px; /* kam kiya */
+  gap: 35px;
+  margin-bottom: 40px;
 }
 
 .footerColumn {
@@ -162,76 +44,94 @@
 }
 
 .socialIcons a {
-  font-size: 1.2rem;
+  background: #222;
   color: #fff;
-  transition: color 0.3s ease;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  font-size: 1.2rem; /* Kept from second block */
 }
 
 .socialIcons a:hover {
-  color: #00aaff;
+  background: #e63946; /* Kept from first block for better hover */
+  transform: scale(1.1);
 }
 
 .columnTitle {
-  font-size: 1rem;
+  font-size: 18px; /* Kept from first block */
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  color: #fff;
+  position: relative;
 }
 
-.linkList,
-.contactList {
+.linkList {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .linkList li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .linkList a {
+  color: #ccc; /* Kept from second block */
+  font-size: 0.9rem; /* Kept from second block */
   text-decoration: none;
-  color: #ccc;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
+  transition: 0.3s;
 }
 
 .linkList a:hover {
-  color: #fff;
+  color: #e63946; /* Kept from first block */
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .contactList li {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #ccc;
+  /* ✨ FIX: 'center' se 'flex-start' kiya takay icon upar align ho */
+  align-items: flex-start; 
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem; /* Kept from second block */
+  color: #ccc; /* Kept from second block */
 }
 
 .contactList a {
-  color: #ccc;
+  color: #ccc; /* Kept from second block */
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: 0.3s;
 }
 
 .contactList a:hover {
-  color: #fff;
+  color: #e63946; /* Kept from first block */
 }
 
 .footerBottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px; /* Adjusted for consistency */
   margin-top: 20px;
-  padding-top: 10px;
-  font-size: 0.8rem;
   text-align: center;
+  font-size: 0.8rem; /* Kept from second block */
   color: #aaa;
 }
 
 /* ✅ Responsive */
+@media (max-width: 992px) { /* Added a breakpoint for tablets */
+  .footerGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .footerGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 30px; /* Adjusted gap */
   }
 }
 
@@ -242,6 +142,8 @@
   }
   .contactList li {
     justify-content: center;
+    /* On mobile, text can be long, so aligning to top is better */
+    align-items: flex-start; 
   }
   .socialIcons {
     justify-content: center;

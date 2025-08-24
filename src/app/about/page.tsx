@@ -11,8 +11,25 @@ import {
     FaRegBuilding, FaBriefcase, FaUserFriends, FaGlobeEurope, FaAward, FaMapMarkedAlt 
 } from "react-icons/fa";
 
+// FIX 1: Define an interface for a single journey item.
+// Yeh batata hai ki har journey object mein kya-kya hona chahiye.
+interface JourneyItem {
+    year: string;
+    title: string;
+    description: string;
+    icon: React.ReactNode; // Type for React components like <FaRegBuilding />
+}
+
+// FIX 2: Define an interface for a single team member.
+interface TeamMember {
+    name: string;
+    role: string;
+    image: string;
+}
+
 // Data for the journey timeline
-const journeyData = [
+// FIX 3: Apply the JourneyItem[] type to the array.
+const journeyData: JourneyItem[] = [
     { year: "2019", title: "Company Founded", description: "Started with a vision to transform businesses through technology.", icon: <FaRegBuilding /> },
     { year: "2020", title: "First Major Client", description: "Successfully delivered our first enterprise-level solution.", icon: <FaBriefcase /> },
     { year: "2021", title: "Team Expansion", description: "Grew our team to over 25+ skilled professionals.", icon: <FaUserFriends /> },
@@ -22,7 +39,8 @@ const journeyData = [
 ];
 
 // Data for the team members
-const teamData = [
+// FIX 4: Apply the TeamMember[] type to the array.
+const teamData: TeamMember[] = [
     { name: "John Doe", role: "CEO & Founder", image: "/img/model1.jpg" },
     { name: "Jane Smith", role: "CTO", image: "/img/model1.jpg"  },
     { name: "Peter Jones", role: "Lead Developer", image: "/img/model1.jpg"  },
@@ -47,6 +65,7 @@ export default function AboutPage() {
         AOS.init({ duration: 800, once: true });
     }, []);
 
+    // ... Baaki ka saara code bilkul same rahega
     return (
         <div className={styles.aboutPageWrapper}>
             <div className={styles.backgroundVideo}>

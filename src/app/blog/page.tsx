@@ -14,7 +14,21 @@ const poppins = Poppins({
     variable: '--font-poppins',
 });
 
-const allPosts = [
+// FIX 1: Define an interface for a single blog post.
+// Yeh post object ke structure (blueprint) ko define karta hai.
+interface BlogPost {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    author: string;
+    date: string;
+    tags: string[];
+    readTime: string;
+}
+
+// FIX 2: Apply the BlogPost[] type to the allPosts array.
+const allPosts: BlogPost[] = [
     { id: 1, title: "5 Emerging Trends in Software Development for 2025", description: "From AI-driven development to decentralized applications, we explore the latest practices reshaping how software is built.", image: "/img/future.jpg", author: "Jane Doe", date: "August 19, 2025", tags: ["Technology", "Future", "Dev"], readTime: "7 min read" },
     { id: 2, title: "Why UI/UX Design is the Heartbeat of Digital Success", description: "A deep dive into how intuitive design can dramatically increase engagement, conversions, and brand loyalty.", image: "/img/ui-ux.jpg", author: "John Smith", date: "August 15, 2025", tags: ["Design", "UI/UX"], readTime: "5 min read" },
     { id: 3, title: "Mastering DevOps: How to Accelerate Your Delivery Pipeline", description: "Discover how to implement core DevOps principles to accelerate your software release cycles while maintaining quality.", image: "/img/devops.jpg", author: "Emily White", date: "August 10, 2025", tags: ["DevOps", "CI/CD"], readTime: "8 min read" },

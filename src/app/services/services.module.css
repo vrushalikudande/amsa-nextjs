@@ -20,23 +20,24 @@
 
 .mainContent {
     position: relative; z-index: 1; max-width: 1100px;
-    margin: 0 auto; padding: 0 2rem 100px;
+    margin: 0 auto; padding: 0 2rem 80px; /* ✨ UPDATED: Reduced bottom padding */
 }
 
 .section {
-    padding: 80px 0;
+    padding: 64px 0; /* ✨ UPDATED: Reduced section spacing */
 }
 
 .sectionTitle {
     text-align: center; font-size: 2.8rem; font-weight: 700;
-    margin-bottom: 50px; color: #fff;
+    margin-bottom: 40px; /* ✨ UPDATED: Reduced margin */
+    color: #fff;
 }
 
 /* --- Hero Section --- */
 .heroSection {
     min-height: 80vh; display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
-    padding-top: 80px;
+    padding-top: 64px; /* ✨ UPDATED: Reduced top padding */
 }
 
 .heroSubtitle {
@@ -103,15 +104,14 @@
 }
 
 .accordionContent.open {
-    max-height: 700px; /* Increased max-height for content */
+    max-height: 700px;
 }
 
 .contentInner {
     padding: 2rem;
     display: grid;
-    /* ✨ Default to a single column layout */
     grid-template-columns: 1fr; 
-    gap: 2.5rem; /* Increased gap for better spacing */
+    gap: 2rem; /* ✨ UPDATED: Reduced gap */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0 2rem;
 }
@@ -140,7 +140,8 @@
 /* --- Approach Section --- */
 .approachGrid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px; text-align: center;
+    gap: 24px; /* ✨ UPDATED: Reduced gap */
+    text-align: center;
 }
 .approachStep {
     padding: 20px; background: rgba(12, 20, 39, 0.7);
@@ -211,15 +212,15 @@
 /* For Mobile Phones */
 @media (max-width: 768px) {
     .mainContent {
-        padding: 0 1rem 80px;
+        padding: 0 1rem 64px; /* ✨ UPDATED: Reduced bottom padding */
     }
     .sectionTitle { font-size: 2.2rem; }
     .heroTitle { font-size: 2.5rem; }
     .headerTitle { font-size: 1.2rem; }
     .accordionHeader { padding: 1.2rem 1.5rem; }
     .contentInner {
-        margin: 0 1.5rem; /* Adjust margin for mobile */
-        padding: 1.5rem;   /* Adjust padding for mobile */
+        margin: 0 1.5rem; 
+        padding: 1.5rem;
     }
     .featuresList {
         grid-template-columns: 1fr;

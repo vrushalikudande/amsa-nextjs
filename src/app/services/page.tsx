@@ -58,7 +58,7 @@ const services: Service[] = [
   { 
     title: "UI/UX Design", 
     description: "Our design process focuses on creating intuitive, accessible, and visually stunning interfaces through wireframes, prototypes, and user-centric design principles.", 
-    icon: <FaDatabase />,
+    icon: <FaPencilRuler />,
     image: "/img/mission.jpg",
     features: ["User Research & Analysis", "Wireframing & Prototyping", "Interactive Design", "Usability Testing"]
   },

@@ -43,7 +43,7 @@
   text-align: center;
   font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem; /* ✨ UPDATED: Reduced from 3rem */
   color: #fff;
 }
 
@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  padding: 120px 0;
+  padding: 100px 0; /* ✨ UPDATED: Reduced from 120px */
 }
 
 .heroTitle {
@@ -62,7 +62,7 @@
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: #fff;
-  min-height: 180px; /* Fixed height for animation stability */
+  min-height: 180px;
 }
 
 .animatedWord {
@@ -82,7 +82,7 @@
 .heroDescription {
   font-size: 1.1rem;
   max-width: 600px;
-  margin: 0 auto 2.5rem auto;
+  margin: 0 auto 2rem auto; /* ✨ UPDATED: Reduced from 2.5rem */
   color: #d0d5dd;
   line-height: 1.8;
 }
@@ -106,19 +106,19 @@
 
 /* --- Section 2: Why Join Us (Staggered Grid) --- */
 .whyJoinUsSection {
-  padding: 100px 0;
+  padding: 80px 0; /* ✨ UPDATED: Reduced from 100px */
   background-color: #0a101f;
 }
 
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 24px; /* ✨ UPDATED: Reduced from 30px */
 }
 
 .featureCard {
   background: #0c1427;
-  padding: 2.5rem 2rem;
+  padding: 2rem; /* ✨ UPDATED: Reduced from 2.5rem 2rem */
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
@@ -139,7 +139,7 @@
 .featureIcon {
   font-size: 2.5rem;
   color: #a992ff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem; /* ✨ UPDATED: Reduced from 1.5rem */
 }
 
 .featureTitle {
@@ -157,12 +157,12 @@
 
 /* --- Section 3: Meet The Team --- */
 .teamSection {
-  padding: 100px 0;
+  padding: 80px 0; /* ✨ UPDATED: Reduced from 100px */
 }
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 24px; /* ✨ UPDATED: Reduced from 30px */
 }
 .teamCard {
   background: #0c1427;
@@ -174,8 +174,7 @@
 .teamImage {
   border-radius: 50%;
   border: 3px solid #a992ff;
-  margin-bottom: 1.5rem;
-  /* ✨ Added these for better image handling */
+  margin-bottom: 1.25rem; /* ✨ UPDATED: Reduced from 1.5rem */
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -185,7 +184,7 @@
 .teamQuote {
   font-style: italic;
   color: #d0d5dd;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem; /* ✨ UPDATED: Reduced from 1.5rem */
 }
 .teamMemberName {
   font-weight: 600;
@@ -198,7 +197,7 @@
 
 /* --- Section 4: Open Positions --- */
 .positionsSection {
-  padding: 100px 0;
+  padding: 80px 0; /* ✨ UPDATED: Reduced from 100px */
   background-color: #0a101f;
 }
 .positionsContainer {
@@ -213,9 +212,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 1.25rem 0; /* ✨ UPDATED: Reduced from 1.5rem */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  /* ✨ Added for wrapping on small screens */
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -231,7 +229,6 @@
 .applyLink {
   display: flex; align-items: center; gap: 0.5rem; color: #a992ff;
   text-decoration: none; font-weight: 600; transition: all 0.3s ease;
-  /* ✨ Added to prevent shrinking */
   flex-shrink: 0;
 }
 .applyLink:hover { color: #fff; }
@@ -249,7 +246,6 @@
   }
 }
 
-/* ✨ Consolidated and improved responsive styles */
 @media (max-width: 768px) {
   .container {
     padding: 0 1.5rem;
@@ -261,17 +257,15 @@
     min-height: 80vh;
   }
   .heroTitle { 
-    min-height: 150px; /* Adjust height for mobile */
+    min-height: 150px;
   }
   .teamGrid {
-    /* ✨ Use auto-fit for better responsiveness */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   .positionsContainer {
     padding: 1.5rem;
   }
   .jobRow {
-    /* ✨ Make it a column on mobile for better readability */
     flex-direction: column;
     align-items: flex-start;
   }
