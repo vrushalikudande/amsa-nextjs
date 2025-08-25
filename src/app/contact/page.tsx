@@ -1,3 +1,5 @@
+// app/contact/page.tsx
+
 "use client";
 
 import { useState } from "react";
@@ -8,7 +10,6 @@ import {
 } from "react-icons/fa";
 import styles from "./contact.module.css";
 
-// ✨ It's good practice to create a type for your form data
 type FormData = {
     firstName: string;
     lastName: string;
@@ -72,6 +73,7 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // ✨ UPDATED: This function now sends the data to your backend API
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
@@ -80,13 +82,32 @@ export default function ContactPage() {
     }
 
     setIsSubmitting(true);
-    toast.loading("Sending your message...");
+    const toastId = toast.loading("Sending your message...");
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    toast.dismiss();
-    toast.success("Message sent successfully!");
-    setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      toast.dismiss(toastId);
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      } else {
+        toast.error("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      toast.dismiss(toastId);
+      toast.error("An error occurred. Please try again later.");
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -122,6 +143,7 @@ export default function ContactPage() {
           </div>
 
           <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
+            {/* Form fields remain the same */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <input id="firstName" type="text" name="firstName" placeholder=" " value={formData.firstName} onChange={handleChange} required />
@@ -157,7 +179,7 @@ export default function ContactPage() {
 
         <section className={styles.mapSection}>
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.164843997784!2d73.7337978153438!3d18.58812998738203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bbc0e0000001%3A0x13784bf12a76a8a2!2sGera's%20Imperium%20Rise!5e0!3m2!1sen!2sin!4v1661163749420!5m2!1sen!2sin" 
+            src="http://googleusercontent.com/maps.google.com/2" 
             className={styles.mapIframe}
             allowFullScreen
             loading="lazy" 
