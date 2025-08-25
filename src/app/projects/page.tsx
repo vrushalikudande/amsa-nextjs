@@ -1,8 +1,6 @@
-// app/projects/page.tsx
-
 "use client";
 
-import { useEffect, useState } from "react"; // Added useState
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
@@ -64,7 +62,7 @@ const projectsData: Project[] = [
   }
 ];
 
-// New component for the Popup Modal
+// Component for the Popup Modal
 const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => void; }) => {
   if (!project) return null;
 
@@ -87,22 +85,18 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
   );
 };
 
-
-// Updated main page component
+// Main page component
 export default function ProjectsPage() {
-  // State to manage the selected project and modal visibility
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  // Function to open the modal
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
   };
 
-  // Function to close the modal
   const handleCloseModal = () => {
     setSelectedProject(null);
   };
@@ -126,13 +120,12 @@ export default function ProjectsPage() {
 
         <section className={styles.projectsGrid}>
           {projectsData.map((project, index) => (
-            // Changed Link to a div with an onClick handler
             <div
               key={project.id}
               className={styles.projectCard}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              onClick={() => handleProjectClick(project)} // This opens the modal
+              onClick={() => handleProjectClick(project)}
             >
               <Image
                 src={project.image}
@@ -142,7 +135,6 @@ export default function ProjectsPage() {
                 style={{ objectFit: 'cover' }}
               />
               <div className={styles.cardOverlay}></div>
-              
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>{project.title}</h3>
                 <div className={styles.cardHoverContent}>
@@ -167,7 +159,6 @@ export default function ProjectsPage() {
             Get a Free Consultation
           </Link>
         </section>
-        
       </main>
 
       {/* Conditionally render the modal when a project is selected */}

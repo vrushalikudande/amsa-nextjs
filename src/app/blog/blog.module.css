@@ -1,3 +1,5 @@
+/* Final updated blog.module.css */
+
 .blogPageWrapper {
     font-family: var(--font-poppins), sans-serif;
     color: #ffffff;
@@ -67,6 +69,7 @@
     border-radius: 16px;
     padding: 20px;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 .featuredCard:hover {
     transform: translateY(-5px);
@@ -82,6 +85,9 @@
 }
 .featuredTextContent {
     padding: 10px;
+    /* ✨ FIX: Ensures the text content can grow and shrink properly */
+    display: flex;
+    flex-direction: column;
 }
 .featuredTitle {
     font-size: 2rem; font-weight: 600; line-height: 1.3;
@@ -90,7 +96,7 @@
 
 .postsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -102,6 +108,7 @@
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 .blogCard:hover {
     transform: translateY(-8px);
@@ -157,120 +164,126 @@
     transform: translateX(5px);
 }
 
-@media (max-width: 900px) {
-    .featuredCard {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .blogTitle { font-size: 2.5rem; }
-}
-
-
-/* ADD THIS CSS TO THE END OF blog.module.css */
-
+/* --- Modal Styles --- */
 .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-out;
-  padding: 20px;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000; animation: fadeIn 0.3s ease-out; padding: 20px;
 }
-
 .modalContent {
-  background: #0c1427;
-  color: #fff;
-  border-radius: 15px;
-  width: 100%;
-  max-width: 800px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
+  background: #0c1427; color: #fff; border-radius: 15px;
+  width: 100%; max-width: 800px; max-height: 90vh;
+  overflow-y: auto; position: relative;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
 .closeButton {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2.5rem;
-  cursor: pointer;
-  line-height: 1;
-  z-index: 10;
+  position: absolute; top: 15px; right: 20px; background: none;
+  border: none; color: #fff; font-size: 2.5rem;
+  cursor: pointer; line-height: 1; z-index: 10;
 }
-
 .modalImageContainer {
-  position: relative;
-  width: 100%;
-  height: 300px;
+  position: relative; width: 100%; height: 300px;
 }
-
-.modalTextContent {
-  padding: 30px;
-}
-
+.modalTextContent { padding: 30px; }
 .modalTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 15px;
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;
 }
-
 .modalTags span {
-  background: rgba(169, 146, 255, 0.1);
-  color: #a992ff;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  background: rgba(169, 146, 255, 0.1); color: #a992ff;
+  padding: 5px 12px; border-radius: 20px;
+  font-size: 0.85rem; font-weight: 500;
 }
-
 .modalTitle {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: 2.2rem; font-weight: 700; margin-bottom: 10px;
 }
-
 .modalMeta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  color: #98a2b3;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
+  display: flex; flex-wrap: wrap; gap: 10px; color: #98a3b3;
+  font-size: 0.9rem; margin-bottom: 20px;
 }
-
 .modalDescription {
-  color: #d0d5dd;
-  line-height: 1.7;
-  font-size: 1rem;
+  color: #d0d5dd; line-height: 1.7; font-size: 1rem;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
 
+/* --- ✅ Consolidated Responsive Styles --- */
+
+/* For Tablets */
+@media (max-width: 900px) {
+    .blogContent {
+        padding: 100px 20px 60px;
+    }
+    .featuredCard {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        height: auto; /* ✨ FIX: Ensure the card can grow */
+    }
+    .featuredTextContent {
+        padding: 0;
+    }
+}
+
+/* For Mobile Devices */
 @media (max-width: 768px) {
-  .modalTitle {
-    font-size: 1.8rem;
-  }
-  .modalTextContent {
-    padding: 25px;
-  }
-  .modalImageContainer {
-    height: 200px;
-  }
+    .blogContent {
+        padding: 80px 15px 60px;
+    }
+    .blogTitle { 
+        font-size: 2.2rem; 
+    }
+    .filterBar {
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+    .filterButton {
+        padding: 6px 15px;
+        font-size: 0.9rem;
+    }
+    .featuredSection {
+        margin-bottom: 40px;
+    }
+    .featuredTitle {
+        font-size: 1.6rem;
+    }
+    .postsGrid {
+        gap: 20px;
+    }
+    .cardContent {
+        padding: 20px;
+    }
+    .cardTitle {
+        font-size: 1.15rem;
+    }
+
+    /* Modal on Mobile */
+    .modalContent {
+      max-width: 95%;
+    }
+    .modalTitle {
+        font-size: 1.5rem;
+    }
+    .modalTextContent {
+        padding: 20px;
+    }
+    .modalImageContainer {
+        height: 200px;
+    }
+}
+
+/* For Small Mobile Devices */
+@media (max-width: 400px) {
+    .postsGrid {
+        /* Switch to single column on very narrow screens */
+        grid-template-columns: 1fr;
+    }
+    .featuredTextContent {
+      /* ✨ FIX: Ensure word break for long titles */
+      overflow-wrap: break-word;
+    }
+    .featuredTitle {
+      font-size: 1.4rem;
+    }
 }

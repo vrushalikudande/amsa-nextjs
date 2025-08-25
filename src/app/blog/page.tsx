@@ -1,12 +1,9 @@
-// app/blog/page.tsx
-
 "use client";
 
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
-// Link is no longer needed for individual posts, but we keep it in case you have other links.
 import Link from "next/link"; 
 import styles from "./blog.module.css";
 import { Poppins } from 'next/font/google';
@@ -38,7 +35,7 @@ const allPosts: BlogPost[] = [
 // Get unique categories for filter buttons
 const allCategories = ['All', ...new Set(allPosts.flatMap(post => post.tags))];
 
-// ✨ FIX: New component for the Popup Modal
+// New component for the Popup Modal
 const BlogModal = ({ post, onClose }: { post: BlogPost; onClose: () => void; }) => {
   if (!post) return null;
 
@@ -70,7 +67,6 @@ const BlogModal = ({ post, onClose }: { post: BlogPost; onClose: () => void; }) 
 
 
 export default function BlogPage() {
-    // ✨ FIX: Add state to manage the selected post and modal
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
     const [activeCategory, setActiveCategory] = useState('All');
 
@@ -78,7 +74,6 @@ export default function BlogPage() {
         AOS.init({ duration: 800, once: true });
     }, []);
 
-    // ✨ FIX: Click handlers for the modal
     const handlePostClick = (post: BlogPost) => {
         setSelectedPost(post);
     };
@@ -122,7 +117,6 @@ export default function BlogPage() {
 
                 {featuredPost && (
                     <section className={styles.featuredSection} data-aos="fade-up" data-aos-delay="200">
-                        {/* ✨ FIX: Changed Link to div with onClick */}
                         <div onClick={() => handlePostClick(featuredPost)} className={styles.featuredCard}>
                             <div className={styles.featuredImageContainer}>
                                 <Image src={featuredPost.image} alt={featuredPost.title} fill style={{ objectFit: 'cover' }} className={styles.cardImage} />
@@ -148,7 +142,6 @@ export default function BlogPage() {
 
                 <section id="posts-grid-section" className={styles.postsGrid}>
                     {otherPosts.map((post, index) => (
-                        // ✨ FIX: Changed Link to div with onClick
                         <div onClick={() => handlePostClick(post)} key={post.id} className={styles.blogCard} data-aos="fade-up" data-aos-delay={index * 100}>
                             <div className={styles.cardImageContainer}>
                                 <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} className={styles.cardImage} />
@@ -169,7 +162,6 @@ export default function BlogPage() {
                 </section>
             </main>
 
-            {/* ✨ FIX: Conditionally render the modal here */}
             {selectedPost && (
                 <BlogModal post={selectedPost} onClose={handleCloseModal} />
             )}
