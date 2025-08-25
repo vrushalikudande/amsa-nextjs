@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
-import Link from "next/link"; 
 import styles from "./blog.module.css";
 import { Poppins } from 'next/font/google';
 
@@ -14,6 +13,7 @@ const poppins = Poppins({
     variable: '--font-poppins',
 });
 
+//--- Blog Post Data and Interfaces (No Change Here) ---//
 interface BlogPost {
     id: number;
     title: string;
@@ -34,34 +34,27 @@ const allPosts: BlogPost[] = [
 
 const allCategories = ['All', ...new Set(allPosts.flatMap(post => post.tags))];
 
-
+//--- BlogModal Component (No Change Here) ---//
 const BlogModal = ({ post, onClose }: { post: BlogPost; onClose: () => void; }) => {
-  if (!post) return null;
-
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>&times;</button>
-        <div className={styles.modalImageContainer}>
-          <Image src={post.image} alt={post.title} layout="fill" objectFit="cover" />
+    if (!post) return null;
+    return (
+        <div className={styles.modalOverlay} onClick={onClose}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                <button className={styles.closeButton} onClick={onClose}>&times;</button>
+                <div className={styles.modalImageContainer}>
+                    <Image src={post.image} alt={post.title} layout="fill" objectFit="cover" />
+                </div>
+                <div className={styles.modalTextContent}>
+                    <div className={styles.modalTags}>{post.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+                    <h2 className={styles.modalTitle}>{post.title}</h2>
+                    <div className={styles.modalMeta}>
+                        <span>By {post.author}</span><span>•</span><span>{post.date}</span><span>•</span><span>{post.readTime}</span>
+                    </div>
+                    <p className={styles.modalDescription}>{post.description}</p>
+                </div>
+            </div>
         </div>
-        <div className={styles.modalTextContent}>
-          <div className={styles.modalTags}>
-            {post.tags.map(tag => <span key={tag}>{tag}</span>)}
-          </div>
-          <h2 className={styles.modalTitle}>{post.title}</h2>
-          <div className={styles.modalMeta}>
-            <span>By {post.author}</span>
-            <span>•</span>
-            <span>{post.date}</span>
-            <span>•</span>
-            <span>{post.readTime}</span>
-          </div>
-          <p className={styles.modalDescription}>{post.description}</p>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 
@@ -73,12 +66,8 @@ export default function BlogPage() {
         AOS.init({ duration: 800, once: true });
     }, []);
 
-    const handlePostClick = (post: BlogPost) => {
-        setSelectedPost(post);
-    };
-    const handleCloseModal = () => {
-        setSelectedPost(null);
-    };
+    const handlePostClick = (post: BlogPost) => setSelectedPost(post);
+    const handleCloseModal = () => setSelectedPost(null);
 
     const filteredPosts = activeCategory === 'All'
         ? allPosts
@@ -97,48 +86,55 @@ export default function BlogPage() {
             </div>
 
             <main className={styles.blogContent}>
-                <header className={styles.blogHeader} data-aos="fade-up">
-                    <h1 className={styles.blogTitle}>From The Blog</h1>
-                    <p className={styles.blogSubtitle}>Insights, stories, and updates to help you navigate the future of technology.</p>
-                </header>
 
-                <section className={styles.filterBar} data-aos="fade-up" data-aos-delay="100">
-                    {allCategories.map(category => (
-                        <button
-                            key={category}
-                            className={`${styles.filterButton} ${activeCategory === category ? styles.activeFilter : ''}`}
-                            onClick={() => setActiveCategory(category)}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </section>
+                {/* --- NEW WRAPPER FOR SIDE-BY-SIDE LAYOUT --- */}
+                <div className={styles.heroSection}>
+                    
+                    {/* Left Side: Title and Filters */}
+                    <div className={styles.heroLeft} data-aos="fade-right">
+                        <header className={styles.blogHeader}>
+                            <h1 className={styles.blogTitle}>From The Blog</h1>
+                            <p className={styles.blogSubtitle}>Insights, stories, and updates to help you navigate the future of technology.</p>
+                        </header>
+                        <section className={styles.filterBar}>
+                            {allCategories.map(category => (
+                                <button
+                                    key={category}
+                                    className={`${styles.filterButton} ${activeCategory === category ? styles.activeFilter : ''}`}
+                                    onClick={() => setActiveCategory(category)}
+                                >
+                                    {category}
+                                </button>
+                            ))}
+                        </section>
+                    </div>
 
-                {featuredPost && (
-                    <section className={styles.featuredSection} data-aos="fade-up" data-aos-delay="200">
-                        <div onClick={() => handlePostClick(featuredPost)} className={styles.featuredCard}>
-                            <div className={styles.featuredImageContainer}>
-                                <Image src={featuredPost.image} alt={featuredPost.title} fill style={{ objectFit: 'cover' }} className={styles.cardImage} />
+                    {/* Right Side: Featured Blog Post */}
+                    {featuredPost && (
+                        <section className={styles.fullPostSection} data-aos="fade-left" data-aos-delay="100">
+                            <div className={styles.fullPostImageContainer}>
+                                <Image src={featuredPost.image} alt={featuredPost.title} layout="fill" objectFit="cover" />
                             </div>
-                            <div className={styles.featuredTextContent}>
-                                <div className={styles.cardTags}>
+                            <div className={styles.fullPostTextContent}>
+                                <div className={styles.fullPostTags}>
                                     {featuredPost.tags.map(tag => <span key={tag}>{tag}</span>)}
                                 </div>
-                                <h2 className={styles.featuredTitle}>{featuredPost.title}</h2>
-                                <p className={styles.cardDescription}>{featuredPost.description}</p>
-                                <div className={styles.cardMeta}>
-                                    <span>{featuredPost.author}</span>
+                                <h2 className={styles.fullPostTitle}>{featuredPost.title}</h2>
+                                <p className={styles.fullPostDescription}>{featuredPost.description}</p>
+                                <div className={styles.fullPostMeta}>
+                                    <span>By {featuredPost.author}</span>
                                     <span>•</span>
                                     <span>{featuredPost.date}</span>
                                     <span>•</span>
                                     <span>{featuredPost.readTime}</span>
                                 </div>
-                                <span className={styles.readMoreLink}>Read Full Article &rarr;</span>
                             </div>
-                        </div>
-                    </section>
-                )}
+                        </section>
+                    )}
+                </div>
+                {/* --- END OF NEW WRAPPER --- */}
 
+                {/* Grid of other posts */}
                 <section id="posts-grid-section" className={styles.postsGrid}>
                     {otherPosts.map((post, index) => (
                         <div onClick={() => handlePostClick(post)} key={post.id} className={styles.blogCard} data-aos="fade-up" data-aos-delay={index * 100}>
@@ -146,15 +142,9 @@ export default function BlogPage() {
                                 <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} className={styles.cardImage} />
                             </div>
                             <div className={styles.cardContent}>
-                                <div className={styles.cardTags}>
-                                    {post.tags.map(tag => <span key={tag}>{tag}</span>)}
-                                </div>
+                                <div className={styles.cardTags}>{post.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
                                 <h3 className={styles.cardTitle}>{post.title}</h3>
-                                <div className={styles.cardMeta}>
-                                    <span>{post.author}</span>
-                                    <span>•</span>
-                                    <span>{post.date}</span>
-                                </div>
+                                <div className={styles.cardMeta}><span>{post.author}</span><span>•</span><span>{post.date}</span></div>
                             </div>
                         </div>
                     ))}
