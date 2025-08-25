@@ -61,7 +61,7 @@ const Footer = () => {
                 <FaFacebookF />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/amsa-overseas-private-ltd/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
