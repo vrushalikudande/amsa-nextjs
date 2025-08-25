@@ -2,14 +2,14 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react"; // Added useState
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./projects.module.css";
 
-// ✨ FIX 1: Define an interface for a single project object.
+// Project data interface
 interface Project {
   id: number;
   title: string;
@@ -18,7 +18,7 @@ interface Project {
   image: string;
 }
 
-// ✨ FIX 2: Apply the Project[] type to the projectsData array.
+// Project data
 const projectsData: Project[] = [
   {
     id: 1,
@@ -64,10 +64,48 @@ const projectsData: Project[] = [
   }
 ];
 
+// New component for the Popup Modal
+const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => void; }) => {
+  if (!project) return null;
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <button className={styles.closeButton} onClick={onClose}>&times;</button>
+        <div className={styles.modalImageContainer}>
+          <Image src={project.image} alt={project.title} fill style={{ objectFit: 'cover' }} />
+        </div>
+        <div className={styles.modalTextContent}>
+          <h2>{project.title}</h2>
+          <p>{project.description}</p>
+          <div className={styles.modalTags}>
+            {project.tags.map(tag => <span key={tag}>{tag}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+// Updated main page component
 export default function ProjectsPage() {
+  // State to manage the selected project and modal visibility
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+
+  // Function to open the modal
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  // Function to close the modal
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+  };
 
   return (
     <div className={styles.projectsPageWrapper}>
@@ -88,12 +126,13 @@ export default function ProjectsPage() {
 
         <section className={styles.projectsGrid}>
           {projectsData.map((project, index) => (
-            <Link
-              href={`/projects/${project.id}`}
+            // Changed Link to a div with an onClick handler
+            <div
               key={project.id}
               className={styles.projectCard}
               data-aos="fade-up"
               data-aos-delay={index * 100}
+              onClick={() => handleProjectClick(project)} // This opens the modal
             >
               <Image
                 src={project.image}
@@ -115,7 +154,7 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </section>
 
@@ -130,6 +169,11 @@ export default function ProjectsPage() {
         </section>
         
       </main>
+
+      {/* Conditionally render the modal when a project is selected */}
+      {selectedProject && (
+        <ProjectModal project={selectedProject} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }

@@ -186,3 +186,97 @@
   .projectsGrid { grid-template-columns: 1fr; }
   .cardTitle { font-size: 1.5rem; }
 }
+
+
+/* ADD THIS CSS TO YOUR projects.module.css FILE */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modalContent {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modalImageContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%; /* Aspect ratio */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modalTextContent h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #a992ff;
+}
+
+.modalTextContent p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.modalTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modalTags span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .modalTextContent h2 {
+    font-size: 1.5rem;
+  }
+}
