@@ -179,7 +179,7 @@ export default function ContactPage() {
 
         <section className={styles.mapSection}>
           <iframe 
-            src="http://googleusercontent.com/maps.google.com/2" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.162817233835!2d73.7323861759496!3d18.58811806651842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bbc18e3d8131%3A0x2855f11b516b043!2sGera's%20Imperium%20Rise!5e0!3m2!1sen!2sin!4v1724570880313!5m2!1sen!2sin"
             className={styles.mapIframe}
             allowFullScreen
             loading="lazy" 
