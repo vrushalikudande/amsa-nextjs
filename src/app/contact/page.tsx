@@ -1,4 +1,4 @@
-// app/contact/page.tsx
+
 
 "use client";
 
@@ -73,7 +73,7 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // ✨ UPDATED: This function now sends the data to your backend API
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
@@ -143,7 +143,7 @@ export default function ContactPage() {
           </div>
 
           <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
-            {/* Form fields remain the same */}
+          
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <input id="firstName" type="text" name="firstName" placeholder=" " value={formData.firstName} onChange={handleChange} required />

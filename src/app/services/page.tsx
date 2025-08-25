@@ -1,8 +1,8 @@
-// app/services/ServicesClientPage.tsx
+
 
 "use client";
 
-import { useState, ReactNode } from "react"; // ✨ Import ReactNode
+import { useState, ReactNode } from "react"; 
 import Image from 'next/image';
 import {
   FaLaptopCode, FaMobileAlt, FaUsers, FaCogs, FaShoppingCart, FaDatabase,
@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import styles from "./services.module.css";
 
-// ✨ FIX 1: Define a proper type for a service object
+
 type Service = {
     title: string;
     description: string;
@@ -24,7 +24,7 @@ const services: Service[] = [
     title: "Website Development", 
     description: "We build modern, responsive, and high-performing websites using cutting-edge technologies like React and WordPress, designed to engage your audience and convert visitors into customers.", 
     icon: <FaLaptopCode />,
-    image: "/img/mission.jpg", // Suggestion: Use unique images
+    image: "/img/mission.jpg",
     features: ["Custom UI/UX Design", "Responsive on all devices", "CMS Integration", "SEO Optimized Foundation"]
   },
   { 
@@ -73,14 +73,14 @@ const technologiesData = {
   database: ["MySQL", "PostgreSQL", "MongoDB", "Firebase"],
 };
 
-// ✨ FIX 2: Define a proper type for the accordion item's props
+
 type ServiceAccordionItemProps = {
     service: Service;
     isOpen: boolean;
     onClick: () => void;
 };
 
-// ✨ Apply the new prop type here
+
 const ServiceAccordionItem = ({ service, isOpen, onClick }: ServiceAccordionItemProps) => {
   return (
     <div className={styles.accordionItem}>

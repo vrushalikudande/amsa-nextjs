@@ -6,29 +6,25 @@ import Image from "next/image";
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import styles from "./about.module.css";
-import { 
+import {
     FaBullseye, FaEye, FaLightbulb, FaUsers, FaMedal, FaHeart,
-    FaRegBuilding, FaBriefcase, FaUserFriends, FaGlobeEurope, FaAward, FaMapMarkedAlt 
+    FaRegBuilding, FaBriefcase, FaUserFriends, FaGlobeEurope, FaAward, FaMapMarkedAlt
 } from "react-icons/fa";
 
-// FIX 1: Define an interface for a single journey item.
-// Yeh batata hai ki har journey object mein kya-kya hona chahiye.
 interface JourneyItem {
     year: string;
     title: string;
     description: string;
-    icon: React.ReactNode; // Type for React components like <FaRegBuilding />
+    icon: React.ReactNode;
 }
 
-// FIX 2: Define an interface for a single team member.
+
 interface TeamMember {
     name: string;
     role: string;
     image: string;
 }
 
-// Data for the journey timeline
-// FIX 3: Apply the JourneyItem[] type to the array.
 const journeyData: JourneyItem[] = [
     { year: "2019", title: "Company Founded", description: "Started with a vision to transform businesses through technology.", icon: <FaRegBuilding /> },
     { year: "2020", title: "First Major Client", description: "Successfully delivered our first enterprise-level solution.", icon: <FaBriefcase /> },
@@ -38,16 +34,14 @@ const journeyData: JourneyItem[] = [
     { year: "2024", title: "New Office Launch", description: "Inaugurated a new state-of-the-art development center in Pune.", icon: <FaMapMarkedAlt /> }
 ];
 
-// Data for the team members
-// FIX 4: Apply the TeamMember[] type to the array.
 const teamData: TeamMember[] = [
     { name: "John Doe", role: "CEO & Founder", image: "/img/model1.jpg" },
-    { name: "Jane Smith", role: "CTO", image: "/img/model1.jpg"  },
-    { name: "Peter Jones", role: "Lead Developer", image: "/img/model1.jpg"  },
-    { name: "Emily White", role: "Project Manager", image: "/img/model1.jpg"  }
+    { name: "Jane Smith", role: "CTO", image: "/img/model1.jpg" },
+    { name: "Peter Jones", role: "Lead Developer", image: "/img/model1.jpg" },
+    { name: "Emily White", role: "Project Manager", image: "/img/model1.jpg" }
 ];
 
-// Reusable Counter component
+
 const StatCounter = ({ end, suffix, text }: { end: number, suffix: string, text: string }) => {
     const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
     return (
@@ -65,7 +59,7 @@ export default function AboutPage() {
         AOS.init({ duration: 800, once: true });
     }, []);
 
-    // ... Baaki ka saara code bilkul same rahega
+
     return (
         <div className={styles.aboutPageWrapper}>
             <div className={styles.backgroundVideo}>
@@ -76,15 +70,18 @@ export default function AboutPage() {
             </div>
 
             <main className={styles.aboutContent}>
+                {/* UPDATED HEADER SECTION */}
                 <header className={styles.aboutHeader} data-aos="fade-up">
-                    <h1>Driven by Innovation, Defined by Excellence</h1>
-                    <p>We are a team of thinkers, creators, and technologists dedicated to building software that solves real-world problems and drives business growth.</p>
+                    <div className={styles.headerText}>
+                        <h1>Driven by Innovation, Defined by Excellence</h1>
+                        <p>We are a team of thinkers, creators, and technologists dedicated to building software that solves real-world problems and drives business growth.</p>
+                    </div>
+                    <div className={styles.headerImage}>
+                        <Image src="/img/mission.jpg" alt="Team collaborating on a project" width={600} height={400} />
+                    </div>
                 </header>
 
                 <section className={styles.missionSection} data-aos="fade-up">
-                    <div className={styles.missionImage}>
-                        <Image src="/img/mission.jpg" alt="Team collaborating on a project" width={600} height={400} />
-                    </div>
                     <div className={styles.missionContent}>
                         <div className={styles.missionItem}>
                             <FaBullseye className={styles.icon} />

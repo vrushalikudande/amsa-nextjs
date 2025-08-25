@@ -1,4 +1,4 @@
-/* services.module.css */
+
 
 .servicesPageWrapper {
     color: white;
@@ -20,24 +20,24 @@
 
 .mainContent {
     position: relative; z-index: 1; max-width: 1100px;
-    margin: 0 auto; padding: 0 2rem 80px; /* ✨ UPDATED: Reduced bottom padding */
+    margin: 0 auto; padding: 0 2rem 80px; 
 }
 
 .section {
-    padding: 64px 0; /* ✨ UPDATED: Reduced section spacing */
+    padding: 64px 0; 
 }
 
 .sectionTitle {
     text-align: center; font-size: 2.8rem; font-weight: 700;
-    margin-bottom: 40px; /* ✨ UPDATED: Reduced margin */
+    margin-bottom: 40px; 
     color: #fff;
 }
 
-/* --- Hero Section --- */
+
 .heroSection {
     min-height: 80vh; display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
-    padding-top: 64px; /* ✨ UPDATED: Reduced top padding */
+    padding-top: 64px; 
 }
 
 .heroSubtitle {
@@ -54,7 +54,7 @@
     font-size: 1.1rem; max-width: 650px; color: #d0d5dd; line-height: 1.8;
 }
 
-/* --- Service Accordion --- */
+
 .accordionContainer {
     display: flex; flex-direction: column; gap: 1rem;
 }
@@ -111,7 +111,7 @@
     padding: 2rem;
     display: grid;
     grid-template-columns: 1fr; 
-    gap: 2rem; /* ✨ UPDATED: Reduced gap */
+    gap: 2rem; 
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0 2rem;
 }

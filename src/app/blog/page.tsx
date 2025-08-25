@@ -32,10 +32,9 @@ const allPosts: BlogPost[] = [
     { id: 4, title: "The Rise of Scalable IT: Building an Infrastructure That Grows", description: "From cloud solutions to microservices, we explore strategies for creating a flexible and robust IT infrastructure. Learn how to design systems that can handle rapid growth without compromising performance or security.", image: "/img/scalable-it.jpg", author: "Chris Green", date: "August 5, 2025", tags: ["Cloud", "Infrastructure"], readTime: "6 min read" },
 ];
 
-// Get unique categories for filter buttons
 const allCategories = ['All', ...new Set(allPosts.flatMap(post => post.tags))];
 
-// New component for the Popup Modal
+
 const BlogModal = ({ post, onClose }: { post: BlogPost; onClose: () => void; }) => {
   if (!post) return null;
 

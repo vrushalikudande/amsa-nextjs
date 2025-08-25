@@ -1,7 +1,7 @@
 // app/api/send-email/route.ts
 
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer'; // ✅ CORRECTED: Module name is now a string
+import nodemailer from 'nodemailer'; 
 
 export async function POST(request: Request) {
   try {
@@ -15,18 +15,17 @@ export async function POST(request: Request) {
       },
     });
 
-    // 1. Email to the Website Owner (You)
     const ownerMailOptions = {
       from: process.env.GMAIL_EMAIL,
       to: process.env.OWNER_EMAIL,
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      replyTo: email, // Makes replying easy
+      replyTo: email, 
       html: `
         <h2>New Message from Your Website's Contact Form</h2>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
         <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <hr>
+        
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
@@ -34,7 +33,7 @@ export async function POST(request: Request) {
     
     // 2. Confirmation Email to the User
     const userMailOptions = {
-      from: `"Your Company Name" <${process.env.GMAIL_EMAIL}>`,
+      from: `"Amsa Overseas" <${process.env.GMAIL_EMAIL}>`,
       to: email,
       subject: `We've Received Your Message!`,
       html: `
@@ -42,10 +41,10 @@ export async function POST(request: Request) {
         <p>We have successfully received your message and will get back to you as soon as possible.</p>
         <p>Here is a copy of your submission:</p>
         <blockquote style="border-left: 4px solid #ccc; padding-left: 16px; margin-left: 0;">
-          <p>${message.replace(/\n/g, '<br>')}</p>
+          <p>message:- ${message.replace(/\n/g, '<br>')}</p>
         </blockquote>
         <p>Best regards,</p>
-        <p>The Team at Your Company Name</p>
+        <p>The Team at Amsa Overseas</p>
       `,
     };
 

@@ -1,4 +1,4 @@
-// app/career/CareerClientPage.tsx
+
 
 "use client";
 
@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { FaLightbulb, FaUsers, FaChartLine, FaLaptopCode, FaArrowRight } from "react-icons/fa";
 import styles from "./career.module.css";
 
-// This interface is fine, no changes needed here.
 interface WhyJoinUsItem {
     icon: ReactNode;
     title: string;
@@ -22,7 +21,6 @@ const whyJoinUsData: WhyJoinUsItem[] = [
     { icon: <FaLaptopCode />, title: "Flexibility & Balance", description: "We believe in a healthy work-life balance with flexible timings and a friendly environment." },
 ];
 
-// ✨ FIX 1: Define an interface for a single team member object.
 interface TeamMember {
     name: string;
     role: string;
@@ -30,7 +28,6 @@ interface TeamMember {
     quote: string;
 }
 
-// ✨ FIX 2: Apply the TeamMember[] type to the teamData array.
 const teamData: TeamMember[] = [
     { name: "Priya Sharma", role: "Lead Engineer", image: "/img/model1.jpg", quote: "The best part about working here is the freedom to innovate and the supportive team." },
     { name: "Rahul Verma", role: "Product Designer", image: "/img/model1.jpg", quote: "We're constantly pushing boundaries. It's an exciting place to be for any creative professional." },

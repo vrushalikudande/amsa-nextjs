@@ -1,4 +1,3 @@
-/* Final updated blog.module.css */
 
 .blogPageWrapper {
     font-family: var(--font-poppins), sans-serif;
@@ -85,7 +84,7 @@
 }
 .featuredTextContent {
     padding: 10px;
-    /* ✨ FIX: Ensures the text content can grow and shrink properly */
+    
     display: flex;
     flex-direction: column;
 }
@@ -164,7 +163,7 @@
     transform: translateX(5px);
 }
 
-/* --- Modal Styles --- */
+
 .modalOverlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
@@ -209,9 +208,9 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-/* --- ✅ Consolidated Responsive Styles --- */
 
-/* For Tablets */
+
+
 @media (max-width: 900px) {
     .blogContent {
         padding: 100px 20px 60px;
@@ -219,14 +218,14 @@
     .featuredCard {
         grid-template-columns: 1fr;
         gap: 25px;
-        height: auto; /* ✨ FIX: Ensure the card can grow */
+        height: auto; 
     }
     .featuredTextContent {
         padding: 0;
     }
 }
 
-/* For Mobile Devices */
+
 @media (max-width: 768px) {
     .blogContent {
         padding: 80px 15px 60px;
@@ -258,7 +257,6 @@
         font-size: 1.15rem;
     }
 
-    /* Modal on Mobile */
     .modalContent {
       max-width: 95%;
     }
@@ -273,14 +271,14 @@
     }
 }
 
-/* For Small Mobile Devices */
+
 @media (max-width: 400px) {
     .postsGrid {
-        /* Switch to single column on very narrow screens */
+        
         grid-template-columns: 1fr;
     }
     .featuredTextContent {
-      /* ✨ FIX: Ensure word break for long titles */
+     
       overflow-wrap: break-word;
     }
     .featuredTitle {

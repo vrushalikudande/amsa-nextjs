@@ -160,7 +160,6 @@
     display: block;
 }
 
-/* --- ✅ RESPONSIVE FIXES START HERE --- */
 
 @media (max-width: 900px) {
     .contactContainer {
@@ -180,19 +179,19 @@
     }
 }
 
-/* ✅ ADDED: Media query for smaller mobile screens */
+
 @media (max-width: 500px) {
     .contactContent {
-        padding: 80px 15px 50px; /* Reduced padding */
+        padding: 80px 15px 50px; 
     }
     .contactHeader h1 {
-        font-size: 2.2rem; /* Reduced font size */
+        font-size: 2.2rem; 
     }
     .contactHeader p {
         font-size: 1rem;
     }
     .contactInfo, .contactForm {
-        padding: 30px; /* Reduced internal padding */
+        padding: 30px;
     }
     .contactInfo h2 {
         font-size: 1.6rem;

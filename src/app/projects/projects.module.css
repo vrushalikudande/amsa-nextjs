@@ -1,4 +1,4 @@
-/* Your existing styles... */
+
 .projectsPageWrapper {
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -43,7 +43,7 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-  cursor: pointer; /* Added for better UX */
+  cursor: pointer; 
 }
 .cardImage {
   position: absolute;
@@ -170,7 +170,7 @@
   max-width: 800px;
   max-height: 90vh;
   overflow-y: auto;
-  position: relative; /* Crucial for positioning the close button */
+  position: relative; 
   border: 1px solid rgba(255, 255, 255, 0.2);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -186,12 +186,12 @@
   font-size: 2rem;
   cursor: pointer;
   line-height: 1;
-  z-index: 10; /* Ensure it's above other modal content */
+  z-index: 10; 
 }
 .modalImageContainer {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10; /* A good aspect ratio for images */
+  aspect-ratio: 16 / 10; 
   border-radius: 10px;
   overflow: hidden;
 }
